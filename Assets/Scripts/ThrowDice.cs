@@ -30,18 +30,37 @@ public class ThrowDice : NetworkBehaviour
 
     void Start()
     {
-        for (int i = 0; i < p_numberOfDice - 1; i++)
+        for (int i = 0; i < p_numberOfDice; i++)
         {
             rend[i] = dice[i].GetComponent<Renderer>();
         }
-        mat1[0].SetFloat("_LerpVal", 1);
-        mat2[0].SetFloat("_LerpVal", 1);
+
         diceRb[0].isKinematic = true;
         diceRb[1].isKinematic = true;
         diceRb[2].isKinematic = true;
         diceRb[3].isKinematic = true;
         diceRb[4].isKinematic = true;
         diceRb[5].isKinematic = true;
+
+        if (SpawningArea.switchingMat == 0)
+        {
+            for (int i = 0; i < p_numberOfDice; i++)
+            {
+                Debug.Log(i);
+                rend[i].sharedMaterial = mat1[i];
+                mat1[i].SetFloat("_LerpVal", 0);
+                mat2[i].SetFloat("_LerpVal", 0);
+            }
+        }
+        if (SpawningArea.switchingMat == 1)
+        {
+            for (int i = 0; i < p_numberOfDice; i++)
+            {
+                rend[i].sharedMaterial = mat2[i];
+            }
+        }
+        mat1[0].SetFloat("_LerpVal", 1);
+        mat2[0].SetFloat("_LerpVal", 1);
     }
 
     void Update()
@@ -51,24 +70,11 @@ public class ThrowDice : NetworkBehaviour
             return;
         }
 
-        if(SpawningArea.switchingMat == 0)
-        {
-            for (int i = 0; i < p_numberOfDice-1; i++)
-            {
-                rend[i].sharedMaterial = mat1[i];
-            }
-        }
-        if (SpawningArea.switchingMat == 1)
-        {
-            for (int i = 0; i < p_numberOfDice - 1; i++)
-            {
-                rend[i].sharedMaterial = mat2[i];
-            }
-        }
+
 
         DiceSelection();
 
-        Throw();    
+        Throw();
     }
 
     private void DiceSelection()
@@ -133,7 +139,7 @@ public class ThrowDice : NetworkBehaviour
         {
             if (p_strenght < strenghtMax)
             {
-                p_strenght += Time.deltaTime * 5;
+                ++p_strenght;
             }
         }
 
@@ -155,8 +161,8 @@ public class ThrowDice : NetworkBehaviour
                 }
             }
             float randX = Random.Range(0f, 1f);
-                float randY = Random.Range(0f, 1f);
-                float randZ = Random.Range(0f, 1f);
+            float randY = Random.Range(0f, 1f);
+            float randZ = Random.Range(0f, 1f);
 
             if (SpawningArea.playerNb.Value == 1)
             {
@@ -173,67 +179,68 @@ public class ThrowDice : NetworkBehaviour
                     p_randNegPosX[n] = Random.Range(-0.2f, 0.2f);
                 }
             }
-                if (p_currentDice == 0)
-                {
-                    diceRb[0].isKinematic = false;
+            if (p_currentDice == 0)
+            {
+                diceRb[0].isKinematic = false;
 
-                    diceRb[0].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
-                    diceRb[0].AddForce(new Vector3(p_randNegPosX[0] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
-                    diceRb[0].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
-                    diceRolled = 0;
-                    DiceResultGenerator.NumberGen();
-                }
-                if (p_currentDice == 1)
-                {
-                    diceRb[p_currentDice].isKinematic = false;
-
-                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
-                    diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[1] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
-                    diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
-                    diceRolled = p_currentDice;
-                    DiceResultGenerator.NumberGen();
+                diceRb[0].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
+                diceRb[0].AddForce(new Vector3(p_randNegPosX[0] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
+                diceRb[0].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
+                diceRolled = 0;
+                DiceResultGenerator.NumberGen();
             }
-                if (p_currentDice == 2)
-                {
-                    diceRb[p_currentDice].isKinematic = false;
+            if (p_currentDice == 1)
+            {
+                diceRb[p_currentDice].isKinematic = false;
 
-                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
-                    diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[2] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow)  * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
-                    diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
-                    diceRolled = p_currentDice;
-                    DiceResultGenerator.NumberGen();
-                }
-                if (p_currentDice == 3)
-                {
-                    diceRb[p_currentDice].isKinematic = false;
+                diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
+                diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[1] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
+                diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
+                diceRolled = p_currentDice;
+                DiceResultGenerator.NumberGen();
+            }
+            if (p_currentDice == 2)
+            {
+                diceRb[p_currentDice].isKinematic = false;
 
-                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
-                    diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[3] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
-                    diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
-                    diceRolled = p_currentDice;
-                    DiceResultGenerator.NumberGen();
-                }
-                if (p_currentDice == 4)
-                {
-                    diceRb[p_currentDice].isKinematic = false;
+                diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
+                diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[2] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
+                diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
+                diceRolled = p_currentDice;
+                DiceResultGenerator.NumberGen();
+            }
+            if (p_currentDice == 3)
+            {
+                diceRb[p_currentDice].isKinematic = false;
 
-                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
-                    diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[4] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
-                    diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
-                    diceRolled = p_currentDice;
-                    DiceResultGenerator.NumberGen();
-                }
-                if (p_currentDice == 5)
-                {
-                    diceRb[p_currentDice].isKinematic = false;
+                diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
+                diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[3] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
+                diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
+                diceRolled = p_currentDice;
+                DiceResultGenerator.NumberGen();
+            }
+            if (p_currentDice == 4)
+            {
+                diceRb[p_currentDice].isKinematic = false;
 
-                    diceRb[5].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
-                    diceRb[5].AddForce(new Vector3(p_randNegPosX[4] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
-                    diceRb[5].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
-                    diceRolled = 5;
-                    DiceResultGenerator.NumberGen();
-                }
-        }   
+                diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
+                diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[4] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
+                diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
+                diceRolled = p_currentDice;
+                DiceResultGenerator.NumberGen();
+            }
+            if (p_currentDice == 5)
+            {
+                diceRb[p_currentDice].isKinematic = false;
+
+                diceRb[5].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
+                diceRb[5].AddForce(new Vector3(p_randNegPosX[4] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
+                diceRb[5].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
+                diceRolled = 5;
+                DiceResultGenerator.NumberGen();
+            }
+        }
     }
 }
+
 

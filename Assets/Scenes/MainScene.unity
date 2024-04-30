@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2261.3108, g: 2402.5745, b: 3499.9614, a: 1}
+  m_IndirectSpecularColor: {r: 2262.8967, g: 2404.3948, b: 3501.895, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5417,13 +5417,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5228615637994025402, guid: 916043dc2083bc74591bd2ea81de867a,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 368
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228615637994025402, guid: 916043dc2083bc74591bd2ea81de867a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 368
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228615637994025402, guid: 916043dc2083bc74591bd2ea81de867a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 368
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228615637994025402, guid: 916043dc2083bc74591bd2ea81de867a,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.45074865
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 5228615637994025402, guid: 916043dc2083bc74591bd2ea81de867a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 5228615637994025402, guid: 916043dc2083bc74591bd2ea81de867a,
         type: 3}
@@ -5464,6 +5479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228615637994025402, guid: 916043dc2083bc74591bd2ea81de867a,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6396495639063055061, guid: 916043dc2083bc74591bd2ea81de867a,
         type: 3}
@@ -6024,7 +6044,7 @@ Transform:
   m_GameObject: {fileID: 1823688464}
   serializedVersion: 2
   m_LocalRotation: {x: 0.44510412, y: 0, z: 0, w: 0.89547884}
-  m_LocalPosition: {x: -0.45, y: 0.94, z: 4.79}
+  m_LocalPosition: {x: 0.05, y: 4.65, z: 3.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

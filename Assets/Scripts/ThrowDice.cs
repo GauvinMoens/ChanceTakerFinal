@@ -15,6 +15,7 @@ public class ThrowDice : NetworkBehaviour
     [SerializeField] float strenghtMax = 150;
     [SerializeField] float strenghtMultiplier = 3;
     [SerializeField] float strenghtRotMultiplier = 5;
+    [SerializeField] float strenghtVerticalMultiplier = 4;
     float p_speed = 50;
     int p_currentDice = 0;
     int p_numberOfDice = 6;
@@ -132,7 +133,7 @@ public class ThrowDice : NetworkBehaviour
         {
             if (p_strenght < strenghtMax)
             {
-                ++p_strenght;
+                p_strenght += Time.deltaTime * 5;
             }
         }
 
@@ -176,7 +177,7 @@ public class ThrowDice : NetworkBehaviour
                 {
                     diceRb[0].isKinematic = false;
 
-                    diceRb[0].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtMultiplier, ForceMode.Impulse);
+                    diceRb[0].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
                     diceRb[0].AddForce(new Vector3(p_randNegPosX[0] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
                     diceRb[0].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
                     diceRolled = 0;
@@ -186,7 +187,7 @@ public class ThrowDice : NetworkBehaviour
                 {
                     diceRb[p_currentDice].isKinematic = false;
 
-                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtMultiplier, ForceMode.Impulse);
+                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
                     diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[1] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
                     diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
                     diceRolled = p_currentDice;
@@ -196,7 +197,7 @@ public class ThrowDice : NetworkBehaviour
                 {
                     diceRb[p_currentDice].isKinematic = false;
 
-                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtMultiplier, ForceMode.Impulse);
+                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
                     diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[2] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow)  * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
                     diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
                     diceRolled = p_currentDice;
@@ -206,7 +207,7 @@ public class ThrowDice : NetworkBehaviour
                 {
                     diceRb[p_currentDice].isKinematic = false;
 
-                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtMultiplier, ForceMode.Impulse);
+                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
                     diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[3] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
                     diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
                     diceRolled = p_currentDice;
@@ -216,7 +217,7 @@ public class ThrowDice : NetworkBehaviour
                 {
                     diceRb[p_currentDice].isKinematic = false;
 
-                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtMultiplier, ForceMode.Impulse);
+                    diceRb[p_currentDice].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
                     diceRb[p_currentDice].AddForce(new Vector3(p_randNegPosX[4] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
                     diceRb[p_currentDice].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
                     diceRolled = p_currentDice;
@@ -226,7 +227,7 @@ public class ThrowDice : NetworkBehaviour
                 {
                     diceRb[p_currentDice].isKinematic = false;
 
-                    diceRb[5].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtMultiplier, ForceMode.Impulse);
+                    diceRb[5].AddForce(Vector3.up * p_strenght * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
                     diceRb[5].AddForce(new Vector3(p_randNegPosX[4] * SpawningArea.revertThrow, 0, SpawningArea.revertThrow) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
                     diceRb[5].AddTorque(new Vector3(randX, randY, randZ) * p_strenght * strenghtRotMultiplier, ForceMode.Impulse);
                     diceRolled = 5;

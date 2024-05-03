@@ -46,7 +46,6 @@ public class ThrowDice : NetworkBehaviour
         {
             for (int i = 0; i < p_numberOfDice; i++)
             {
-                Debug.Log(i);
                 rend[i].sharedMaterial = mat1[i];
                 mat1[i].SetFloat("_LerpVal", 0);
                 mat2[i].SetFloat("_LerpVal", 0);
@@ -148,14 +147,14 @@ public class ThrowDice : NetworkBehaviour
             if (SpawningArea.switchingMat == 0)
             {
 
-                for (int i = 0; i < p_numberOfDice - 1; i++)
+                for (int i = 0; i < p_numberOfDice; i++)
                 {
                     mat1[i].SetFloat("_LerpVal", 0);
                 }
             }
             if (SpawningArea.switchingMat == 1)
             {
-                for (int i = 0; i < p_numberOfDice - 1; i++)
+                for (int i = 0; i < p_numberOfDice; i++)
                 {
                     mat2[i].SetFloat("_LerpVal", 0);
                 }
@@ -166,7 +165,7 @@ public class ThrowDice : NetworkBehaviour
 
             if (SpawningArea.playerNb.Value == 1)
             {
-                for (int n = 0; n < 5; ++n)
+                for (int n = 0; n < p_numberOfDice; ++n)
                 {
                     p_randNegPosX[n] = Random.Range(-0.5f, 0.5f);
                 }
@@ -174,7 +173,7 @@ public class ThrowDice : NetworkBehaviour
             }
             else
             {
-                for (int n = 0; n < 5; ++n)
+                for (int n = 0; n < p_numberOfDice; ++n)
                 {
                     p_randNegPosX[n] = Random.Range(-0.2f, 0.2f);
                 }

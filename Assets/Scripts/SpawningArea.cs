@@ -22,7 +22,8 @@ public class SpawningArea : NetworkBehaviour
         Debug.Log(playerNb.Value);
         if (playerNb.Value == 1)
         {
-            transform.position = new Vector3(-0.46f, 2.8f, 4.25f);
+            transform.position = new Vector3(-0.43f, 2.48f, 3.9f);
+            transform.rotation = Quaternion.Euler(0,90,0);
             revertThrow = 1;
             switchingMat = 0;
         }

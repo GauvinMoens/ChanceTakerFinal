@@ -15,7 +15,7 @@ public class HUD : MonoBehaviour
 
     private void SliderUpdate()
     {
-        float currentStrenght = Mathf.Lerp(strenghtSlider.value, ThrowDice.p_strenght, Time.deltaTime/0.8f);
+        float currentStrenght = Mathf.Lerp(strenghtSlider.value, ThrowDice.p_strenght, Time.deltaTime/0.25f);
         strenghtSlider.value = currentStrenght;
     }
 

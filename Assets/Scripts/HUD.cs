@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] Slider strenghtSlider;
+    [SerializeField] Slider strenghtSliderP1;
+    [SerializeField] Slider strenghtSliderP2;
     public static int matToggle = 0;
+
 
     private void Update()
     {
@@ -15,13 +17,20 @@ public class HUD : MonoBehaviour
 
     private void SliderUpdate()
     {
-        float currentStrenght = Mathf.Lerp(strenghtSlider.value, ThrowDice.p_strenght, Time.deltaTime/0.25f);
-        strenghtSlider.value = currentStrenght;
+        float currentStrenght = Mathf.Lerp(strenghtSliderP1.value, ThrowDice.p_strenght, Time.deltaTime/0.25f);
+        strenghtSliderP1.value = currentStrenght;
+        float currentStrenghtP2 = Mathf.Lerp(strenghtSliderP2.value, ThrowDice1.p_strenghtP2, Time.deltaTime / 0.25f);
+        strenghtSliderP2.value = currentStrenghtP2;
     }
 
-    public void ResetStrenght()
+    public void ResetStrenghtP1()
     {
         ThrowDice.p_strenght = 0;
+    }
+
+    public void ResetStrenghtP2()
+    {
+        ThrowDice1.p_strenghtP2 = 0;
     }
 
     public void SwitchMaterialButton1()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DiceRollingManager : MonoBehaviour
 {
@@ -23,8 +24,11 @@ public class DiceRollingManager : MonoBehaviour
     [SerializeField] float strenghtRotMultiplier = 5;
     [SerializeField] float strenghtVerticalMultiplier = 4;
 
+    
+
     public static int rollingCondition;
     float p_speed = 50;
+
 
 
     private void Start()
@@ -45,6 +49,12 @@ public class DiceRollingManager : MonoBehaviour
         diceRbP2[5].isKinematic = true;
     }
 
+    private void Update()
+    {
+        
+    }
+
+  
     public void Roll()
     {
         ++rollingCondition;
@@ -60,14 +70,16 @@ public class DiceRollingManager : MonoBehaviour
                 p_randNegPosXP1[n] = Random.Range(-0.5f, 0.5f);
             }
 
-            diceRbP1[0].isKinematic = false;
+            diceRbP1[currentDiceP1].isKinematic = false;
 
             diceRbP1[currentDiceP1].AddForce(Vector3.up * strenghtP1 * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
             diceRbP1[currentDiceP1].AddForce(new Vector3(1, 0, p_randNegPosXP1[currentDiceP1]) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
             diceRbP1[currentDiceP1].AddTorque(new Vector3(randXP1, randYP1, randZP1) * strenghtP1 * strenghtRotMultiplier, ForceMode.Impulse);
             diceRolledP1 = currentDiceP1;
+            Debug.Log(currentDiceP1); 
             DiceResultGenerator.NumberGen1();
-            
+
+            //Instantiate the number sprite on the Dice after 2 sec delay
 
 
             float randXP2 = Random.Range(0f, 1f);
@@ -86,12 +98,22 @@ public class DiceRollingManager : MonoBehaviour
             diceRolledP2 = currentDiceP2;
             DiceResultGenerator.NumberGen2();
 
+            //Instantiate the number sprite on the Dice after 2 sec delay
+
+            //Add a delay and a splash screen with what player won the round
+
+            if (CheckNumberDifferences.player1DiceLeft == 1)
+            {
+                CheckNumberDifferences.Instance.CheckLastChanceNbP1();
+            }
+            if (CheckNumberDifferences.player2DiceLeft == 1)
+            {
+                CheckNumberDifferences.Instance.CheckLastChanceNbP2();
+            }
             CheckNumberDifferences.Instance.CheckDifferenceBetweenResultNumbers();
 
             rollingCondition = 0;
         }
-        Debug.Log(rollingCondition);
-    }
-    
 
+    }
 }

@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MainSceneTestRelay.unity
     guid: 5d62e4c9ff9616a4393278e43865d1f4
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: c71555a30a8e03b44a2d4086d3dbb82d
   - enabled: 0

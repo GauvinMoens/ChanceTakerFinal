@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
 
+    public static GameManager instance { get; private set; }
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

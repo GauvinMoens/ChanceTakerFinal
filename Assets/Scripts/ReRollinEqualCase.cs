@@ -42,10 +42,12 @@ public class ReRollinEqualCase : MonoBehaviour
         p_randNegPosXP1 = Random.Range(-0.5f, 0.5f);
         RbP1.isKinematic = false;
         RbP1.AddForce(Vector3.up * 60 * Time.deltaTime * strenghtVerticalMultiplier, ForceMode.Impulse);
-        RbP1.AddForce(new Vector3(-1, 0, p_randNegPosXP1) * Time.deltaTime * strenghtMultiplier * 50 * 4, ForceMode.Impulse);
+        RbP1.AddForce(new Vector3(1, 0, p_randNegPosXP1) * Time.deltaTime * strenghtMultiplier * 50 * 4, ForceMode.Impulse);
         RbP1.AddTorque(new Vector3(randXP1, randYP1, randZP1) * DiceRollingManager.strenghtP1 * strenghtRotMultiplier, ForceMode.Impulse);
         DiceResultGenerator.numberGenInEqualCaseP1();
+        //Instantiate the number sprite on the Dice after 2 sec delay
 
+       
         float randXP2 = Random.Range(0f, 1f);
         float randYP2 = Random.Range(0f, 1f);
         float randZP2 = Random.Range(0f, 1f);
@@ -55,9 +57,19 @@ public class ReRollinEqualCase : MonoBehaviour
         RbP2.AddForce(new Vector3(-1, 0, p_randNegPosXP2) * Time.deltaTime * strenghtMultiplier * 50 * 4, ForceMode.Impulse);
         RbP2.AddTorque(new Vector3(randXP2, randYP2, randZP2) * 60 * strenghtRotMultiplier, ForceMode.Impulse);
         DiceResultGenerator.numberGenInEqualCaseP2();
+        //Instantiate the number sprite on the Dice after 2 sec delay
 
+        Invoke("DisabledDice", 4);
+
+        //Add delay on the call
         CheckNumberDifferences.Instance.CheckDifferenceBetweenResultNumbers();
         player1.SetActive(true);
         player2.SetActive(true);
+    }
+
+    public void DisabledDice()
+    {
+        P1.SetActive(false);
+        P2.SetActive(false);
     }
 }

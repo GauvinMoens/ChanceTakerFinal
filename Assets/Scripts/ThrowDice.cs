@@ -4,10 +4,12 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class ThrowDice : MonoBehaviour
 {
+    bool lastChanceSelection = false;
 
     [SerializeField] GameObject[] dice;
 
@@ -26,6 +28,10 @@ public class ThrowDice : MonoBehaviour
 
     public static Vector3[] startingPositionP1 = new Vector3[6];
 
+    [SerializeField] GameObject changeLastChanceValUp, changeLastChanceValDown, changeLastChanceDiceUp, changeLastChanceDiceDown, currentLastChanceVal, currentLastChanceDice;
+    [SerializeField] TextMeshProUGUI lastChanceNbText, lastChanceDiceSelectionText;
+    public static int lastChanceNb = 1;
+    public static int lastChanceDice = 1;
     void Start()
     {
 
@@ -47,10 +53,56 @@ public class ThrowDice : MonoBehaviour
 
     void Update()
     {
-      
+        if (CheckNumberDifferences.player1DiceLeft == 1)
+        {
+            changeLastChanceValUp.SetActive(true);
+            changeLastChanceValDown.SetActive(true);
+            changeLastChanceDiceUp.SetActive(true);
+            changeLastChanceDiceDown.SetActive(true);
+            currentLastChanceDice.SetActive(true);
+            currentLastChanceVal.SetActive(true);
+        }
+
         DiceSelection();
 
         Throw();
+    }
+
+    public void ChangeUpLastChanceNb()
+    {
+        if(lastChanceNb < 20)
+        {
+            ++lastChanceNb;
+        }
+        lastChanceNbText.text = lastChanceNb.ToString();
+    }
+    public void ChangeDownLastChanceNb()
+    {
+        if (lastChanceNb > 1)
+        {
+            --lastChanceNb;
+        }
+        lastChanceNbText.text = lastChanceNb.ToString();
+    }
+
+    public void lastChanceDiceSelectionDown()
+    {
+        if (lastChanceDice > 0)
+        {
+            --lastChanceDice;
+        }
+        int lastChanceDiceVar = lastChanceDice + 1;
+        lastChanceDiceSelectionText.text = lastChanceDiceVar.ToString();
+    }
+
+    public void lastChanceDiceSelectionUp()
+    {
+        if (lastChanceDice < 5)
+        {
+            ++lastChanceDice;
+        }
+        int lastChanceDiceVar = lastChanceDice + 1;
+        lastChanceDiceSelectionText.text = lastChanceDiceVar.ToString();
     }
 
     private void DiceSelection()
@@ -95,14 +147,6 @@ public class ThrowDice : MonoBehaviour
                 ++p_strenght;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            
-           
- 
-            
-        }
     }
 
     public void endOfTurn()
@@ -115,6 +159,12 @@ public class ThrowDice : MonoBehaviour
         DiceRollingManager.strenghtP1 = p_strenght;
         p2Enabled = true;
         ThrowDice1.p1Enabled = false;
+        changeLastChanceValUp.SetActive(false);
+        changeLastChanceValDown.SetActive(false);
+        changeLastChanceDiceUp.SetActive(false);
+        changeLastChanceDiceDown.SetActive(false);
+        currentLastChanceDice.SetActive(false);
+        currentLastChanceVal.SetActive(false);
         DiceRollingManager.Instance.Roll();
     }
 }

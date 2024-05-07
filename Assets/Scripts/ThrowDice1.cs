@@ -4,7 +4,7 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class ThrowDice1 : MonoBehaviour
 {
@@ -24,7 +24,10 @@ public class ThrowDice1 : MonoBehaviour
 
     public static Vector3[] startingPositionP2 = new Vector3[6];
 
-
+    [SerializeField] GameObject changeLastChanceValUp, changeLastChanceValDown, changeLastChanceDiceUp, changeLastChanceDiceDown, currentLastChanceVal, currentLastChanceDice;
+    [SerializeField] TextMeshProUGUI lastChanceNbText, lastChanceDiceSelectionText;
+    public static int lastChanceNb = 1;
+    public static int lastChanceDice = 1;
     void Start()
     {
         for (int i = 0; i < p_numberOfDice; i++)
@@ -49,8 +52,55 @@ public class ThrowDice1 : MonoBehaviour
         DiceSelection();
 
         Throw();
+
+        if (CheckNumberDifferences.player2DiceLeft == 1)
+        {
+            changeLastChanceValUp.SetActive(true);
+            changeLastChanceValDown.SetActive(true);
+            changeLastChanceDiceUp.SetActive(true);
+            changeLastChanceDiceDown.SetActive(true);
+            currentLastChanceDice.SetActive(true);
+            currentLastChanceVal.SetActive(true);
+
+        }
+        lastChanceNbText.text = lastChanceNb.ToString();
+        int lastChanceDiceVar = lastChanceDice + 1;
+        lastChanceDiceSelectionText.text = lastChanceDiceVar.ToString();
     }
 
+    public void ChangeUpLastChanceNb()
+    {
+        if (lastChanceNb < 20)
+        {
+            ++lastChanceNb;
+        }
+    }
+    public void ChangeDownLastChanceNb()
+    {
+        if (lastChanceNb > 0)
+        {
+            --lastChanceNb;
+        }
+    }
+
+
+    public void lastChanceDiceSelectionDown()
+    {
+        if (lastChanceDice > 0)
+        {
+            --lastChanceDice;
+        }
+
+    }
+
+    public void lastChanceDiceSelectionUp()
+    {
+        if (lastChanceDice < 5)
+        {
+            ++lastChanceDice;
+        }
+
+    }
     private void DiceSelection()
     {
         if (ThrowDice.p2Enabled == true)
@@ -105,6 +155,12 @@ public class ThrowDice1 : MonoBehaviour
         ThrowDice.p2Enabled = false;
         DiceRollingManager.currentDiceP2 = p_currentDice;
         DiceRollingManager.strenghtP2 = p_strenghtP2;
+        changeLastChanceValUp.SetActive(false);
+        changeLastChanceValDown.SetActive(false);
+        changeLastChanceDiceUp.SetActive(false);
+        changeLastChanceDiceDown.SetActive(false);
+        currentLastChanceDice.SetActive(false);
+        currentLastChanceVal.SetActive(false);
         DiceRollingManager.Instance.Roll();
     }
 }

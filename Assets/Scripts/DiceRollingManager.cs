@@ -7,12 +7,14 @@ public class DiceRollingManager : MonoBehaviour
 {
     public static DiceRollingManager Instance { get; private set; }
 
+    [SerializeField] GameObject[] diceP1;
     [SerializeField] Rigidbody[] diceRbP1;
     float[] p_randNegPosXP1 = new float[6];
     public static int diceRolledP1;
     public static int currentDiceP1;
     public static float strenghtP1;
 
+    [SerializeField] GameObject[] diceP2;
     public static int currentDiceP2;
     float[] p_randNegPosXP2 = new float[6];
     [SerializeField] Rigidbody[] diceRbP2;
@@ -76,6 +78,7 @@ public class DiceRollingManager : MonoBehaviour
             diceRbP1[currentDiceP1].AddForce(new Vector3(1, 0, p_randNegPosXP1[currentDiceP1]) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
             diceRbP1[currentDiceP1].AddTorque(new Vector3(randXP1, randYP1, randZP1) * strenghtP1 * strenghtRotMultiplier, ForceMode.Impulse);
             diceRolledP1 = currentDiceP1;
+            
             Debug.Log(currentDiceP1); 
             DiceResultGenerator.NumberGen1();
 
@@ -96,10 +99,12 @@ public class DiceRollingManager : MonoBehaviour
             diceRbP2[currentDiceP2].AddForce(new Vector3(-1, 0, p_randNegPosXP2[currentDiceP2]) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
             diceRbP2[currentDiceP2].AddTorque(new Vector3(randXP2, randYP2, randZP2) * strenghtP2 * strenghtRotMultiplier, ForceMode.Impulse);
             diceRolledP2 = currentDiceP2;
+            
             DiceResultGenerator.NumberGen2();
 
             //Instantiate the number sprite on the Dice after 2 sec delay
-
+            Invoke("TakePos", 1.5f);
+            DiceResultGenerator.Instance.ShowNumberOfTheDice();
             //Add a delay and a splash screen with what player won the round
 
             if (CheckNumberDifferences.player1DiceLeft == 1)
@@ -115,5 +120,10 @@ public class DiceRollingManager : MonoBehaviour
             rollingCondition = 0;
         }
 
+    }
+    public void TakePos()
+    {
+        DiceResultGenerator.PosFaceP1 = new Vector3(diceP1[currentDiceP1].transform.position.x, diceP1[currentDiceP1].transform.position.y + 0.1f, diceP1[currentDiceP1].transform.position.z);
+        DiceResultGenerator.PosFaceP2 = new Vector3(diceP2[currentDiceP2].transform.position.x, diceP2[currentDiceP2].transform.position.y + 0.1f, diceP2[currentDiceP2].transform.position.z);
     }
 }

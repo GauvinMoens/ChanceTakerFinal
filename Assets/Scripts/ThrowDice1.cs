@@ -105,28 +105,81 @@ public class ThrowDice1 : MonoBehaviour
     {
         if (ThrowDice.p2Enabled == true)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-
-                if (p_currentDice >= 1 && p_currentDice <= p_numberOfDice - 1)
+                if (CheckNumberDifferences.diceP2Out[0] == true)
                 {
-                    if (p_currentDice < p_numberOfDice - 1)
-                    {
-                        mat1[p_currentDice].SetFloat("_LerpVal", 0);
-                        p_currentDice++;
-                        mat1[p_currentDice].SetFloat("_LerpVal", 1);
-                    }
-                    else
-                    {
-                        mat1[p_numberOfDice - 1].SetFloat("_LerpVal", 0);
-                        p_currentDice = 0;
-                        mat1[p_currentDice].SetFloat("_LerpVal", 1);
-                    }
+
                 }
                 else
                 {
                     mat1[p_currentDice].SetFloat("_LerpVal", 0);
-                    p_currentDice++;
+                    p_currentDice = 0;
+                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                if (CheckNumberDifferences.diceP2Out[1] == true)
+                {
+
+                }
+                else
+                {
+                    mat1[p_currentDice].SetFloat("_LerpVal", 0);
+                    p_currentDice = 1;
+                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (CheckNumberDifferences.diceP2Out[2] == true)
+                {
+
+                }
+                else
+                {
+                    mat1[p_currentDice].SetFloat("_LerpVal", 0);
+                    p_currentDice = 2;
+                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (CheckNumberDifferences.diceP2Out[3] == true)
+                {
+
+                }
+                else
+                {
+                    mat1[p_currentDice].SetFloat("_LerpVal", 0);
+                    p_currentDice = 3;
+                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                if (CheckNumberDifferences.diceP2Out[4] == true)
+                {
+
+                }
+                else
+                {
+                    mat1[p_currentDice].SetFloat("_LerpVal", 0);
+                    p_currentDice = 4;
+                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                if (CheckNumberDifferences.diceP2Out[5] == true)
+                {
+
+                }
+                else
+                {
+                    mat1[p_currentDice].SetFloat("_LerpVal", 0);
+                    p_currentDice = 5;
                     mat1[p_currentDice].SetFloat("_LerpVal", 1);
                 }
             }
@@ -151,6 +204,7 @@ public class ThrowDice1 : MonoBehaviour
         {
             mat1[i].SetFloat("_LerpVal", 0);
         }
+
         p1Enabled = true;
         ThrowDice.p2Enabled = false;
         DiceRollingManager.currentDiceP2 = p_currentDice;

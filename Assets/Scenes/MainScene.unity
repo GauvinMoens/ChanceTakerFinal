@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2270.842, g: 2420.4417, b: 3543.3364, a: 1}
+  m_IndirectSpecularColor: {r: 2259.973, g: 2401.801, b: 3499.6724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4744,7 +4744,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.17, y: -0.269, z: 5.22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.659196, y: 3.659196, z: 3.659196}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -5416,6 +5416,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eebcdb422f459a41b1feba432f6f644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceFaceP1: {fileID: 619994277150389166, guid: 1fce8182bc2c1764ea6e843f9db09bdd,
+    type: 3}
+  diceFaceP2: {fileID: 619994277150389166, guid: 782aa8338013dc640b598db41c80b9ab,
+    type: 3}
+  number:
+  - {fileID: 2100000, guid: d352e9af4e330454a873e77fca3cad12, type: 2}
+  - {fileID: 2100000, guid: 821f35165a2f10d4fa25da6433081e44, type: 2}
+  - {fileID: 2100000, guid: a7ee1394fa733174b87b713928f8698b, type: 2}
+  - {fileID: 2100000, guid: d0be8e44b0b28cf4593670536a8cbe3a, type: 2}
+  - {fileID: 2100000, guid: 718ff134bafbbab49bd03c669125ed38, type: 2}
+  - {fileID: 2100000, guid: 9d02fc0f50eb7e04ca660690fba20259, type: 2}
+  - {fileID: 2100000, guid: d3d0d19ab9888484cb91c37f56f37762, type: 2}
+  - {fileID: 2100000, guid: 53c5aafc7927cc94fab1db44d560edff, type: 2}
+  - {fileID: 2100000, guid: 7e9e34b576a262546938062ba897562e, type: 2}
+  - {fileID: 2100000, guid: 139c25b9465f16a4eb93049eb84202e0, type: 2}
+  - {fileID: 2100000, guid: 7549c2af1e45fe34a8c317391b01ebcc, type: 2}
+  - {fileID: 2100000, guid: 8f94626223aba9644bc51ba98ed915b5, type: 2}
+  - {fileID: 2100000, guid: 01b614441d0fce041b280fa1cbf733fe, type: 2}
+  - {fileID: 2100000, guid: ba1e576aa07b8344490ad1d499dc19de, type: 2}
+  - {fileID: 2100000, guid: 40bb5a31c1abcdd46a8f059e6617acab, type: 2}
+  - {fileID: 2100000, guid: 722fe61629353e4428d788497300ddbf, type: 2}
+  - {fileID: 2100000, guid: f66bb81581a432043bb3b81b6464addb, type: 2}
+  - {fileID: 2100000, guid: b6fd4ebe6bd95ff42b1852d8bed3c35c, type: 2}
+  - {fileID: 2100000, guid: 5b7fb94fe1a91f5498cd4fc2ea285698, type: 2}
+  - {fileID: 2100000, guid: b1cc05d863d37fd45af8e4a25cac14f8, type: 2}
 --- !u!4 &1163298319
 Transform:
   m_ObjectHideFlags: 0
@@ -5455,6 +5480,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d90b0520e657964eb68fae7442f9058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceP1:
+  - {fileID: 2120814804}
+  - {fileID: 1542102087}
+  - {fileID: 2093076966}
+  - {fileID: 1000551049}
+  - {fileID: 1734891983}
+  - {fileID: 268968453}
   diceRbP1:
   - {fileID: 2120814805}
   - {fileID: 1542102088}
@@ -5462,6 +5494,13 @@ MonoBehaviour:
   - {fileID: 1000551050}
   - {fileID: 1734891984}
   - {fileID: 268968454}
+  diceP2:
+  - {fileID: 1533580298}
+  - {fileID: 131882917}
+  - {fileID: 1828228443}
+  - {fileID: 52730373}
+  - {fileID: 1803972447}
+  - {fileID: 1851997026}
   diceRbP2:
   - {fileID: 1533580299}
   - {fileID: 131882918}
@@ -7737,7 +7776,7 @@ Transform:
   m_GameObject: {fileID: 1823688464}
   serializedVersion: 2
   m_LocalRotation: {x: 0.44510412, y: 0, z: 0, w: 0.89547884}
-  m_LocalPosition: {x: 0.05, y: 4.65, z: 3.28}
+  m_LocalPosition: {x: 0.32, y: 4.65, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

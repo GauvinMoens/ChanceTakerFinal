@@ -123,7 +123,7 @@ public class DiceRollingManager : MonoBehaviour
     }
     public void TakePos()
     {
-        DiceResultGenerator.PosFaceP1 = new Vector3(diceP1[currentDiceP1].transform.position.x, diceP1[currentDiceP1].transform.position.y + 0.1f, diceP1[currentDiceP1].transform.position.z);
-        DiceResultGenerator.PosFaceP2 = new Vector3(diceP2[currentDiceP2].transform.position.x, diceP2[currentDiceP2].transform.position.y + 0.1f, diceP2[currentDiceP2].transform.position.z);
+        DiceResultGenerator.PosFaceP1 = new Vector3(diceP1[currentDiceP1].transform.position.x, diceP1[currentDiceP1].transform.position.y + 0.2f, diceP1[currentDiceP1].transform.position.z);
+        DiceResultGenerator.PosFaceP2 = new Vector3(diceP2[currentDiceP2].transform.position.x, diceP2[currentDiceP2].transform.position.y + 0.2f, diceP2[currentDiceP2].transform.position.z);
     }
 }

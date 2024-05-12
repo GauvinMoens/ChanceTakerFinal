@@ -36,8 +36,8 @@ public class DiceResultGenerator : MonoBehaviour
     {
         if(DiceRollingManager.diceRolledP1 == 0)
         {
-            // numberGenerated1 = Random.Range(1,4);
-            numberGenerated1 = 1;
+            numberGenerated1 = Random.Range(1,4);
+            //numberGenerated1 = 1;
         }
         if (DiceRollingManager.diceRolledP1 == 1)
         {
@@ -65,8 +65,8 @@ public class DiceResultGenerator : MonoBehaviour
     {
         if (DiceRollingManager.diceRolledP2 == 0)
         {
-            //numberGenerated2 = Random.Range(1, 4);
-            numberGenerated2 = 1;
+            numberGenerated2 = Random.Range(1, 4);
+            //numberGenerated2 = 1;
         }
         if (DiceRollingManager.diceRolledP2 == 1)
         {

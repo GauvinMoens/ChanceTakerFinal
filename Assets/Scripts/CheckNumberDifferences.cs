@@ -24,6 +24,11 @@ public class CheckNumberDifferences : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        for(int i = 0; i < 5; ++i)
+        {
+            diceP1Out[i] = false;
+            diceP2Out[i] = false;
+        }
     }
 
     private void Update()
@@ -47,7 +52,7 @@ public class CheckNumberDifferences : MonoBehaviour
         if(ThrowDice.lastChanceNb == resultOfTheRollP1)
         {
             DiceP1[ThrowDice.lastChanceDice].SetActive(true);
-            diceP1Out[ThrowDice.lastChanceDice] = false;
+            diceP1Out[ThrowDice.lastChanceDice] = true;
             ++player1DiceLeft;
         }
         
@@ -59,7 +64,7 @@ public class CheckNumberDifferences : MonoBehaviour
         if (ThrowDice1.lastChanceNb == resultOfTheRollP2)
         {
             DiceP2[ThrowDice1.lastChanceDice].SetActive(true);
-            diceP2Out[ThrowDice1.lastChanceDice] = false;
+            diceP2Out[ThrowDice1.lastChanceDice] = true;
             ++player2DiceLeft;
         }
 

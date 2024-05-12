@@ -57,7 +57,10 @@ public class ReRollinEqualCase : MonoBehaviour
         RbP2.AddForce(new Vector3(-1, 0, p_randNegPosXP2) * Time.deltaTime * strenghtMultiplier * 50 * 4, ForceMode.Impulse);
         RbP2.AddTorque(new Vector3(randXP2, randYP2, randZP2) * 60 * strenghtRotMultiplier, ForceMode.Impulse);
         DiceResultGenerator.numberGenInEqualCaseP2();
+
         //Instantiate the number sprite on the Dice after 2 sec delay
+        Invoke("TakePos", 1.6f);
+        DiceResultGenerator.Instance.ShowNumberOfTheDice();
 
         Invoke("DisabledDice", 4);
 
@@ -71,5 +74,11 @@ public class ReRollinEqualCase : MonoBehaviour
     {
         P1.SetActive(false);
         P2.SetActive(false);
+    }
+
+    public void TakePos()
+    {
+        DiceResultGenerator.PosFaceP1 = new Vector3(P1.transform.position.x, P1.transform.position.y + 0.1f, P1.transform.position.z);
+        DiceResultGenerator.PosFaceP2 = new Vector3(P2.transform.position.x, P2.transform.position.y + 0.1f, P2.transform.position.z);
     }
 }

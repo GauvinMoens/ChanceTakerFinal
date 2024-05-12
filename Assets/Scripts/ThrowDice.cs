@@ -63,47 +63,144 @@ public class ThrowDice : MonoBehaviour
             currentLastChanceDice.SetActive(true);
             currentLastChanceVal.SetActive(true);
         }
+        
 
         DiceSelection();
+
+        ChangeColorOfTheSelectionText();
 
         Throw();
     }
 
+    public void ChangeColorOfTheSelectionText()
+    {
+        if (CheckNumberDifferences.diceP1Out[0] == true)
+        {
+            if (lastChanceDice == 0)
+                lastChanceDiceSelectionText.color = Color.red;
+        }
+        if (CheckNumberDifferences.diceP1Out[1] == true)
+        {
+            if (lastChanceDice == 1)
+                lastChanceDiceSelectionText.color = Color.red;
+        }
+        if (CheckNumberDifferences.diceP1Out[2] == true)
+        {
+            if (lastChanceDice == 2)
+                lastChanceDiceSelectionText.color = Color.red;
+        }
+        if (CheckNumberDifferences.diceP1Out[3] == true)
+        {
+            if (lastChanceDice == 3)
+                lastChanceDiceSelectionText.color = Color.red;
+        }
+        if (CheckNumberDifferences.diceP1Out[4] == true)
+        {
+            if (lastChanceDice == 4)
+                lastChanceDiceSelectionText.color = Color.red;
+        }
+        if (CheckNumberDifferences.diceP1Out[5] == true)
+        {
+            if (lastChanceDice == 5)
+                lastChanceDiceSelectionText.color = Color.red;
+        }
+    }
+
     public void ChangeUpLastChanceNb()
     {
-        if(lastChanceNb < 20)
+        if (ThrowDice1.p1Enabled == true)
         {
-            ++lastChanceNb;
+            if (lastChanceDice == 0)
+            {
+                if (lastChanceNb < 4)
+                {
+                    ++lastChanceNb;
+                }
+            }
+            if (lastChanceDice == 1)
+            {
+                if (lastChanceNb < 6)
+                {
+                    ++lastChanceNb;
+                }
+            }
+            if (lastChanceDice == 2)
+            {
+                if (lastChanceNb < 8)
+                {
+                    ++lastChanceNb;
+                }
+            }
+            if (lastChanceDice == 3)
+            {
+                if (lastChanceNb < 10)
+                {
+                    ++lastChanceNb;
+                }
+            }
+            if (lastChanceDice == 4)
+            {
+                if (lastChanceNb < 12)
+                {
+                    ++lastChanceNb;
+                }
+            }
+            if (lastChanceDice == 5)
+            {
+                if (lastChanceNb < 20)
+                {
+                    ++lastChanceNb;
+                }
+            }
+            lastChanceNbText.text = lastChanceNb.ToString();
         }
-        lastChanceNbText.text = lastChanceNb.ToString();
     }
     public void ChangeDownLastChanceNb()
     {
-        if (lastChanceNb > 1)
+        if (ThrowDice1.p1Enabled == true)
         {
-            --lastChanceNb;
+            if (lastChanceNb > 1)
+            {
+                --lastChanceNb;
+            }
+            lastChanceNbText.text = lastChanceNb.ToString();
         }
-        lastChanceNbText.text = lastChanceNb.ToString();
     }
 
     public void lastChanceDiceSelectionDown()
     {
-        if (lastChanceDice > 0)
+        if (ThrowDice1.p1Enabled == true)
         {
-            --lastChanceDice;
+            if (CheckNumberDifferences.diceP1Out[0] == false)
+            {
+                if (lastChanceDice > 0)
+                {
+                    --lastChanceDice;
+                }
+                int lastChanceDiceVar = lastChanceDice + 1;
+                lastChanceDiceSelectionText.text = lastChanceDiceVar.ToString();
+            }
+            else
+            {
+                lastChanceDice = 1;
+                int lastChanceDiceVar = lastChanceDice + 1;
+                lastChanceDiceSelectionText.text = lastChanceDiceVar.ToString();
+            }
         }
-        int lastChanceDiceVar = lastChanceDice + 1;
-        lastChanceDiceSelectionText.text = lastChanceDiceVar.ToString();
     }
 
     public void lastChanceDiceSelectionUp()
     {
-        if (lastChanceDice < 5)
+        if (ThrowDice1.p1Enabled == true)
         {
-            ++lastChanceDice;
+           
+            if (lastChanceDice < 5)
+            {
+                ++lastChanceDice;
+            }
+            int lastChanceDiceVar = lastChanceDice + 1;
+            lastChanceDiceSelectionText.text = lastChanceDiceVar.ToString();
         }
-        int lastChanceDiceVar = lastChanceDice + 1;
-        lastChanceDiceSelectionText.text = lastChanceDiceVar.ToString();
     }
 
     private void DiceSelection()

@@ -107,6 +107,7 @@ public class DiceRollingManager : MonoBehaviour
             DiceResultGenerator.Instance.ShowNumberOfTheDice();
             //Add a delay and a splash screen with what player won the round
 
+            CheckNumberDifferences.Instance.CheckDifferenceBetweenResultNumbers();
             if (CheckNumberDifferences.player1DiceLeft == 1)
             {
                 CheckNumberDifferences.Instance.CheckLastChanceNbP1();
@@ -115,7 +116,6 @@ public class DiceRollingManager : MonoBehaviour
             {
                 CheckNumberDifferences.Instance.CheckLastChanceNbP2();
             }
-            CheckNumberDifferences.Instance.CheckDifferenceBetweenResultNumbers();
 
             rollingCondition = 0;
         }

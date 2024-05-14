@@ -124,7 +124,7 @@ public class DiceRollingManager : MonoBehaviour
 
             rollingCondition = 0;
 
-            Invoke("resetCam", 3);
+            Invoke("resetCam", 5);
         }
 
     }

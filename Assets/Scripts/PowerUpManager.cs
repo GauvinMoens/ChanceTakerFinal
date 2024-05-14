@@ -13,6 +13,6 @@ public class PowerUpManager : MonoBehaviour
 
     public void Add2P2()
     {
-
+        
     }
 }

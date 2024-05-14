@@ -83,6 +83,7 @@ Material:
     - _ExcludeFromTUAndAA: 0
     - _FresnelPower: 2
     - _LerpVal: 0
+    - _Metalic: 0.97
     - _OpaqueCullMode: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1

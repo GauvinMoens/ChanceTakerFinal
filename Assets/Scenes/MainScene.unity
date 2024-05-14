@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2262.555, g: 2404.0745, b: 3501.6685, a: 1}
+  m_IndirectSpecularColor: {r: 2261.928, g: 2403.6506, b: 3501.2817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4500,9 +4500,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!1 &796009886
 GameObject:
   m_ObjectHideFlags: 0
@@ -6147,8 +6147,8 @@ MonoBehaviour:
   - {fileID: 52730374}
   - {fileID: 1803972448}
   - {fileID: 1851997027}
-  strenghtMultiplier: 1.9
-  strenghtRotMultiplier: 4
+  strenghtMultiplier: 1
+  strenghtRotMultiplier: 1
   strenghtVerticalMultiplier: 2
   camP1: {fileID: 709872151}
   camP2: {fileID: 1999556365}
@@ -7931,6 +7931,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3970864244284045936, guid: 916043dc2083bc74591bd2ea81de867a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4883052724966386432, guid: 916043dc2083bc74591bd2ea81de867a,
         type: 3}
       propertyPath: m_Name
@@ -8008,11 +8013,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6396495639063055061, guid: 916043dc2083bc74591bd2ea81de867a,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396495639063055061, guid: 916043dc2083bc74591bd2ea81de867a,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b53d48b814fad5146a6dcf298da87f36, type: 2}
+    - target: {fileID: 8288352521156012500, guid: 916043dc2083bc74591bd2ea81de867a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288352521156012500, guid: 916043dc2083bc74591bd2ea81de867a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1126850214155258349, guid: 916043dc2083bc74591bd2ea81de867a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4883052724966386432, guid: 916043dc2083bc74591bd2ea81de867a,

@@ -10,7 +10,7 @@ using TMPro;
 public class ThrowDice : MonoBehaviour
 {
     bool lastChanceSelection = false;
-
+    [SerializeField] GameObject camP1, camP2;
     [SerializeField] GameObject[] dice;
     [SerializeField] GameObject[] diceFaces;
 
@@ -302,6 +302,7 @@ public class ThrowDice : MonoBehaviour
 
     public void endOfTurn()
     {
+        SetCam();
         for (int i = 0; i < p_numberOfDice; i++)
         {
             mat1[i].SetFloat("_LerpVal", 0);
@@ -318,6 +319,12 @@ public class ThrowDice : MonoBehaviour
         currentLastChanceDice.SetActive(false);
         currentLastChanceVal.SetActive(false);
         DiceRollingManager.Instance.Roll();
+    }
+
+    public void SetCam()
+    {
+        camP2.SetActive(true);
+        camP1.SetActive(false);
     }
 }
 

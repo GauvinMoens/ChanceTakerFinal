@@ -26,7 +26,7 @@ public class DiceRollingManager : MonoBehaviour
     [SerializeField] float strenghtRotMultiplier = 5;
     [SerializeField] float strenghtVerticalMultiplier = 4;
 
-    
+    [SerializeField] GameObject camP1, camP2, camRoll;
 
     public static int rollingCondition;
     float p_speed = 50;
@@ -63,6 +63,11 @@ public class DiceRollingManager : MonoBehaviour
 
         if (rollingCondition == 2)
         {
+            camRoll.SetActive(true);
+            camP2.SetActive(false);
+            camP1.SetActive(false);
+
+
             float randXP1 = Random.Range(0f, 1f);
             float randYP1 = Random.Range(0f, 1f);
             float randZP1 = Random.Range(0f, 1f);
@@ -118,9 +123,18 @@ public class DiceRollingManager : MonoBehaviour
             }
 
             rollingCondition = 0;
+
+            Invoke("resetCam", 3);
         }
 
     }
+
+    public void resetCam()
+    {
+        camRoll.SetActive(false);
+        camP1.SetActive(true);
+    }
+
     public void TakePos()
     {
         DiceResultGenerator.PosFaceP1 = new Vector3(diceP1[currentDiceP1].transform.position.x, diceP1[currentDiceP1].transform.position.y + 0.2f, diceP1[currentDiceP1].transform.position.z);

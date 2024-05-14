@@ -5,13 +5,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class ThrowDice1 : MonoBehaviour
 {
     static public bool p1Enabled = true;
 
     [SerializeField] GameObject[] dice;
-    
+    [SerializeField] GameObject camP1, camP2;
     public static float p_strenghtP2;
     [SerializeField] float strenghtMax = 150;
 
@@ -303,7 +304,7 @@ public class ThrowDice1 : MonoBehaviour
         {
             mat1[i].SetFloat("_LerpVal", 0);
         }
-
+        SetCam();
         p1Enabled = true;
         ThrowDice.p2Enabled = false;
         DiceRollingManager.currentDiceP2 = p_currentDice;
@@ -315,6 +316,12 @@ public class ThrowDice1 : MonoBehaviour
         currentLastChanceDice.SetActive(false);
         currentLastChanceVal.SetActive(false);
         DiceRollingManager.Instance.Roll();
+    }
+
+    public void SetCam()
+    {
+        camP2.SetActive(false);
+        camP1.SetActive(true);
     }
 }
 

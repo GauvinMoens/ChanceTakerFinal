@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -21,6 +22,10 @@ public class CheckNumberDifferences : MonoBehaviour
     [SerializeField] private Rigidbody[] rbDiceP2;
     [SerializeField] GameObject player1, player2;
 
+    public bool camFocusP1;
+    public bool camFocusP2;
+
+    
     private void Awake()
     {
         Instance = this;
@@ -75,7 +80,7 @@ public class CheckNumberDifferences : MonoBehaviour
     {
         resultOfTheRollP1 = DiceResultGenerator.numberGenerated1;
         resultOfTheRollP2 = DiceResultGenerator.numberGenerated2;
-
+        StartCoroutine("FocusCam");
         if(resultOfTheRollP1 == resultOfTheRollP2 )
         {
             //Call Reroll script with D6
@@ -91,10 +96,10 @@ public class CheckNumberDifferences : MonoBehaviour
             //P1 looses the round
 
             //Which players won splash screen
-
-
+            
             //add delay on the disabled enabled
             Invoke("player2Win", 4);
+            StartCoroutine("focuscam");
         }
         else
         {
@@ -105,14 +110,32 @@ public class CheckNumberDifferences : MonoBehaviour
 
             //add delay on the disabled enabled
             Invoke("player1Win", 4);
+            StartCoroutine("focuscam");
+
         }
     }
+    //IEnumerator FocusCam()
+    //{
+        
+    //    if (camFocusP1)
+    //    {
+    //        Vector3 camerapostition = new Vector3 (DiceP1[DiceRollingManager.currentDiceP1].transform.position.x, DiceP1[DiceRollingManager.currentDiceP1].transform.position.y, DiceP1[DiceRollingManager.currentDiceP1].transform.position.z);
+    //    }
+
+    //    if (camFocusP2)
+    //    {
+    //        Camera.current.transform.position = DiceP2[DiceRollingManager.currentDiceP2].GetComponent<Transform>().position;
+    //    }
+    //    yield return new WaitForSeconds(4f);
+    //}
+
+
 
     public void player1Win()
     {
         --player2DiceLeft;
         //Add particule system for destruction
-
+        camFocusP1 = true;
         DiceP2[DiceRollingManager.currentDiceP2].SetActive(false);
         diceP2Out[DiceRollingManager.currentDiceP2] = true;
         rbDiceP2[DiceRollingManager.currentDiceP2].isKinematic = true;
@@ -125,6 +148,7 @@ public class CheckNumberDifferences : MonoBehaviour
     public void player2Win()
     {
         --player1DiceLeft;
+        camFocusP2 = true;
         DiceP1[DiceRollingManager.currentDiceP1].SetActive(false);
         diceP1Out[DiceRollingManager.currentDiceP1] = true;
         rbDiceP1[DiceRollingManager.currentDiceP1].isKinematic = true;

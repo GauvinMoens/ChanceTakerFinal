@@ -60,7 +60,7 @@ public class DiceRollingManager : MonoBehaviour
     public void Roll()
     {
         ++rollingCondition;
-
+        Debug.Log(rollingCondition);
         if (rollingCondition == 2)
         {
             camRoll.SetActive(true);
@@ -84,7 +84,8 @@ public class DiceRollingManager : MonoBehaviour
             diceRbP1[currentDiceP1].AddTorque(new Vector3(randXP1, randYP1, randZP1) * strenghtP1 * strenghtRotMultiplier, ForceMode.Impulse);
             diceRolledP1 = currentDiceP1;
             
-            Debug.Log(currentDiceP1); 
+            Debug.Log(currentDiceP1);
+
             DiceResultGenerator.NumberGen1();
 
             //Instantiate the number sprite on the Dice after 2 sec delay

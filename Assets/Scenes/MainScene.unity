@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2263.172, g: 2404.555, b: 3502.0005, a: 1}
+  m_IndirectSpecularColor: {r: 2263.172, g: 2404.555, b: 3502.0044, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -857,7 +857,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 572732077}
         m_TargetAssemblyTypeName: ThrowDice, Assembly-CSharp
-        m_MethodName: endOfTurn
+        m_MethodName: EndOfTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1226,6 +1226,12 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!1 &200577629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1841592155269382889, guid: c7062257e9c21a649991bf262604e13a,
+    type: 3}
+  m_PrefabInstance: {fileID: 656360559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &207149980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,7 +2014,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 897709613}
         m_TargetAssemblyTypeName: ThrowDice1, Assembly-CSharp
-        m_MethodName: endOfTurn
+        m_MethodName: EndOfTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3403,8 +3409,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e345933f4a8f4f4797ba85aefe0ed21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: []
-  powerUpMat: []
+  powerUp:
+  - {fileID: 200577629}
+  - {fileID: 1426369579}
+  - {fileID: 1677891806}
+  powerUpMat:
+  - {fileID: 2100000, guid: ffcc61fdec3e43b448d193d57124ffcd, type: 2}
+  - {fileID: 2100000, guid: 085d03e320226a3479da66366d713f3f, type: 2}
+  - {fileID: 2100000, guid: 0b09bc67a2f8f374587442db3d43ca0a, type: 2}
+  - {fileID: 2100000, guid: 0d8f93826f206594883618aef28733c6, type: 2}
+  - {fileID: 2100000, guid: 74484e4970956f64dafae95da6d80280, type: 2}
+  - {fileID: 2100000, guid: 3e01cf0084cee9244ae52e1374ef32de, type: 2}
+  - {fileID: 2100000, guid: b16ba5feda5c9b346ab23c1c84eec0da, type: 2}
+  - {fileID: 2100000, guid: 8bcec376963be0f49a3720cfcb929232, type: 2}
+  - {fileID: 2100000, guid: 698445a7829149648885c91e85cc494d, type: 2}
+  - {fileID: 2100000, guid: 70b2ae41b0e23f14f8058345b1bec6f4, type: 2}
+  - {fileID: 2100000, guid: e7eef7bd383f08b4ebf0c7491aab937d, type: 2}
+  - {fileID: 2100000, guid: 612e1c1e113ac6d4ca0f8dfccebd5d5c, type: 2}
 --- !u!1001 &578742889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6998,6 +7019,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1426369579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1841592155269382889, guid: c7062257e9c21a649991bf262604e13a,
+    type: 3}
+  m_PrefabInstance: {fileID: 953394068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438229713
 GameObject:
   m_ObjectHideFlags: 0
@@ -7906,6 +7933,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644334816}
   m_CullTransparentMesh: 1
+--- !u!1 &1677891806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1841592155269382889, guid: c7062257e9c21a649991bf262604e13a,
+    type: 3}
+  m_PrefabInstance: {fileID: 578742889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1689449056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10269,8 +10302,8 @@ SceneRoots:
   - {fileID: 1163298319}
   - {fileID: 506645404}
   - {fileID: 953394068}
-  - {fileID: 578742889}
   - {fileID: 656360559}
+  - {fileID: 578742889}
   - {fileID: 466139708}
   - {fileID: 1703316317}
   - {fileID: 767541739}

@@ -16,6 +16,8 @@ public class ThrowDice1 : MonoBehaviour
     public static float p_strenghtP2;
     [SerializeField] float strenghtMax = 150;
 
+    public static int forceDice;
+
     int p_currentDice = 0;
     int p_numberOfDice = 6;
 
@@ -298,13 +300,13 @@ public class ThrowDice1 : MonoBehaviour
         }
 
     }
-    public void endOfTurn()
+    public void EndOfTurn()
     {
+        SetCam();
         for (int i = 0; i < p_numberOfDice; i++)
         {
             mat1[i].SetFloat("_LerpVal", 0);
         }
-        SetCam();
         p1Enabled = true;
         ThrowDice.p2Enabled = false;
         DiceRollingManager.currentDiceP2 = p_currentDice;

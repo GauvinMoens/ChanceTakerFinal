@@ -8,8 +8,8 @@ public class DiceResultGenerator : MonoBehaviour
 {
     public static DiceResultGenerator Instance { get; private set; }
 
-    public static int numberGenerated1;
-    public static int numberGenerated2;
+    public static int numberGenerated1, numberGenerated1Bis;
+    public static int numberGenerated2, numberGenerated2Bis, numberGeneratedP2Disadvantage;
 
     public static Vector3 PosFaceP1 = Vector3.zero;
     public static Vector3 PosFaceP2 = Vector3.zero;
@@ -34,39 +34,135 @@ public class DiceResultGenerator : MonoBehaviour
 
     public static void NumberGen1()
     {
-        if(DiceRollingManager.diceRolledP1 == 0)
+        if (PowerUpP1.advantageEnabled == false)
         {
-            numberGenerated1 = Random.Range(1,4);
-            //numberGenerated1 = 1;
+            if (DiceRollingManager.diceRolledP1 == 0)
+            {
+                numberGenerated1 = Random.Range(1, 4);
+                //numberGenerated1 = 1;
+            }
+            if (DiceRollingManager.diceRolledP1 == 1)
+            {
+                numberGenerated1 = Random.Range(1, 6);
+            }
+            if (DiceRollingManager.diceRolledP1 == 2)
+            {
+                numberGenerated1 = Random.Range(1, 8);
+            }
+            if (DiceRollingManager.diceRolledP1 == 3)
+            {
+                numberGenerated1 = Random.Range(1, 10);
+            }
+            if (DiceRollingManager.diceRolledP1 == 4)
+            {
+                numberGenerated1 = Random.Range(1, 12);
+            }
+            if (DiceRollingManager.diceRolledP1 == 5)
+            {
+                numberGenerated1 = Random.Range(1, 20);
+            }
+
+            //DicePowerUps
+            if(PowerUpP1.D4PowerUpEnabled == true)
+            {
+                numberGenerated1 = Random.Range(1, 4);
+                PowerUpP1.D4PowerUpEnabled = false;
+            }
+            if (PowerUpP1.D6PowerUpEnabled == true)
+            {
+                numberGenerated1 = Random.Range(1, 6);
+                PowerUpP1.D6PowerUpEnabled = false;
+            }
+            if (PowerUpP1.D8PowerUpEnabled == true)
+            {
+                numberGenerated1 = Random.Range(1, 8);
+                PowerUpP1.D8PowerUpEnabled = false;
+            }
+            if (PowerUpP1.D10PowerUpEnabled == true)
+            {
+                numberGenerated1 = Random.Range(1, 10);
+                PowerUpP1.D10PowerUpEnabled = false;
+            }
+            if (PowerUpP1.D12PowerUpEnabled == true)
+            {
+                numberGenerated1 = Random.Range(1, 12);
+                PowerUpP1.D12PowerUpEnabled = false;
+            }
+            if (PowerUpP1.D20PowerUpEnabled == true)
+            {
+                numberGenerated1 = Random.Range(1, 20);
+                PowerUpP1.D20PowerUpEnabled = false;
+            }
         }
-        if (DiceRollingManager.diceRolledP1 == 1)
+
+
+        if (PowerUpP1.advantageEnabled == true)
         {
-            numberGenerated1 = Random.Range(1, 6);
+            if (DiceRollingManager.diceRolledP1 == 0)
+            {
+                numberGenerated1 = Random.Range(1, 4);
+                numberGenerated1Bis = Random.Range(1, 4);
+            }
+            if (DiceRollingManager.diceRolledP1 == 1)
+            {
+                numberGenerated1 = Random.Range(1, 6);
+                numberGenerated1Bis = Random.Range(1, 6);
+            }
+            if (DiceRollingManager.diceRolledP1 == 2)
+            {
+                numberGenerated1 = Random.Range(1, 8);
+                numberGenerated1Bis = Random.Range(1, 8);
+            }
+            if (DiceRollingManager.diceRolledP1 == 3)
+            {
+                numberGenerated1 = Random.Range(1, 10);
+                numberGenerated1Bis = Random.Range(1, 10);
+            }
+            if (DiceRollingManager.diceRolledP1 == 4)
+            {
+                numberGenerated1 = Random.Range(1, 12);
+                numberGenerated1Bis = Random.Range(1, 12);
+            }
+            if (DiceRollingManager.diceRolledP1 == 5)
+            {
+                numberGenerated1 = Random.Range(1, 20);
+                numberGenerated1Bis = Random.Range(1, 20);
+            }
+            
+            if(numberGenerated1 <= numberGenerated1Bis)
+            {
+                numberGenerated1 = numberGenerated1Bis;
+            }
+            PowerUpP1.advantageEnabled = false;
         }
-        if (DiceRollingManager.diceRolledP1 == 2)
-        {
-            numberGenerated1 = Random.Range(1, 8);
-        }
-        if (DiceRollingManager.diceRolledP1 == 3)
-        {
-            numberGenerated2 = Random.Range(1, 12);
-        }
-        if (DiceRollingManager.diceRolledP1 == 4)
-        {
-            numberGenerated1 = Random.Range(1, 12);
-        }
-        if (DiceRollingManager.diceRolledP1 == 5)
-        {
-            numberGenerated1 = Random.Range(1, 20);
-        }
+
         Debug.Log(DiceRollingManager.diceRolledP1 + " " + numberGenerated1);
+        
+        
+        //powerUps
+        if(PowerUpP1.add2Enabled == true)
+        {
+            numberGenerated1 += 2;
+            PowerUpP1.add2Enabled = false;
+        }
+
+        
+
+
+
+
+
+        //Disabled used powerUp
+        if (PowerUpP1.powerUp1Enabled == true)
+        {
+            PowerUpP1.instance.DisabledPowerUp1();
+        }
     }
     public static void NumberGen2()
     {
         if (DiceRollingManager.diceRolledP2 == 0)
         {
             numberGenerated2 = Random.Range(1, 4);
-            //numberGenerated2 = 1;
         }
         if (DiceRollingManager.diceRolledP2 == 1)
         {
@@ -78,7 +174,7 @@ public class DiceResultGenerator : MonoBehaviour
         }
         if (DiceRollingManager.diceRolledP2 == 3)
         {
-            numberGenerated2 = Random.Range(1, 12);
+            numberGenerated2 = Random.Range(1, 10);
         }
         if (DiceRollingManager.diceRolledP2 == 4)
         {
@@ -88,14 +184,93 @@ public class DiceResultGenerator : MonoBehaviour
         {
             numberGenerated2 = Random.Range(1, 20);
         }
+
+        //equalizer
+        if(PowerUpP1.equalizerPowerUpEnabled == true)
+        {
+            if (DiceRollingManager.diceRolledP1 == 0)
+            {
+                numberGenerated2 = Random.Range(1, 4);
+            }
+            if (DiceRollingManager.diceRolledP1 == 1)
+            {
+                numberGenerated2 = Random.Range(1, 6);
+            }
+            if (DiceRollingManager.diceRolledP1 == 2)
+            {
+                numberGenerated2 = Random.Range(1, 8);
+            }
+            if (DiceRollingManager.diceRolledP1 == 3)
+            {
+                numberGenerated2 = Random.Range(1, 10);
+            }
+            if (DiceRollingManager.diceRolledP1 == 4)
+            {
+                numberGenerated2 = Random.Range(1, 12);
+            }
+            if (DiceRollingManager.diceRolledP1 == 5)
+            {
+                numberGenerated2 = Random.Range(1, 20);
+            }
+            PowerUpP1.equalizerPowerUpEnabled = false;
+        }
+
+        if (PowerUpP1.disadvantageEnabled == true)
+        {
+
+            if (DiceRollingManager.diceRolledP2 == 0)
+            {
+                numberGenerated2 = Random.Range(1, 4);
+                numberGeneratedP2Disadvantage = Random.Range(1, 4);
+            }
+            if (DiceRollingManager.diceRolledP2 == 1)
+            {
+                numberGenerated2 = Random.Range(1, 6);
+                numberGeneratedP2Disadvantage = Random.Range(1, 6);
+            }
+            if (DiceRollingManager.diceRolledP2 == 2)
+            {
+                numberGenerated2 = Random.Range(1, 8);
+                numberGeneratedP2Disadvantage = Random.Range(1, 8);
+            }
+            if (DiceRollingManager.diceRolledP2 == 3)
+            {
+                numberGenerated2 = Random.Range(1, 10);
+                numberGeneratedP2Disadvantage = Random.Range(1, 10);
+            }
+            if (DiceRollingManager.diceRolledP2 == 4)
+            {
+                numberGenerated2 = Random.Range(1, 12);
+                numberGeneratedP2Disadvantage = Random.Range(1, 12);
+            }
+            if (DiceRollingManager.diceRolledP2 == 5)
+            {
+                numberGenerated2 = Random.Range(1, 20);
+                numberGeneratedP2Disadvantage = Random.Range(1, 20);
+            }
+
+            if(numberGeneratedP2Disadvantage <= numberGenerated2)
+            {
+                numberGenerated2 = numberGeneratedP2Disadvantage;
+                PowerUpP1.disadvantageEnabled = false;
+            }
+        }
+
         Debug.Log(DiceRollingManager.diceRolledP2 + " " + numberGenerated2);
+
+
+        if(PowerUpP1.sub2ToP2Enabled == true)
+        {
+            numberGenerated2 -= 2;
+            PowerUpP1.sub2ToP2Enabled = false;
+        }
     }
 
-    public static void numberGenInEqualCaseP1()
+    public static void NumberGenInEqualCaseP1()
     {
         numberGenerated1 = Random.Range(1, 6);
     }
-    public static void numberGenInEqualCaseP2()
+    public static void NumberGenInEqualCaseP2()
     {
         numberGenerated2 = Random.Range(1, 6);
     }

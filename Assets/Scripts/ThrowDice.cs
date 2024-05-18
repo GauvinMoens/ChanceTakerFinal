@@ -300,18 +300,19 @@ public class ThrowDice : MonoBehaviour
         }
     }
 
-    public void endOfTurn()
+
+
+    public void EndOfTurn()
     {
         SetCam();
         for (int i = 0; i < p_numberOfDice; i++)
         {
             mat1[i].SetFloat("_LerpVal", 0);
         }
-        DiceResultGenerator.PosFaceP1 = new Vector3(dice[p_currentDice].transform.position.x, dice[p_currentDice].transform.position.y + 0.1f, dice[p_currentDice].transform.position.z);
-        DiceRollingManager.currentDiceP1 = p_currentDice;
-        DiceRollingManager.strenghtP1 = p_strenght;
         p2Enabled = true;
         ThrowDice1.p1Enabled = false;
+        DiceRollingManager.currentDiceP1 = p_currentDice;
+        DiceRollingManager.strenghtP1 = p_strenght;
         changeLastChanceValUp.SetActive(false);
         changeLastChanceValDown.SetActive(false);
         changeLastChanceDiceUp.SetActive(false);

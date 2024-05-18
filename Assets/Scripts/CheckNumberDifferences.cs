@@ -93,37 +93,79 @@ public class CheckNumberDifferences : MonoBehaviour
     {
         resultOfTheRollP1 = DiceResultGenerator.numberGenerated1;
         resultOfTheRollP2 = DiceResultGenerator.numberGenerated2;
-        if(resultOfTheRollP1 == resultOfTheRollP2 )
+        if (PowerUpP1.lowestWinPowerUp == false)
         {
-            //Call Reroll script with D6
-            
-            //reroll splash screen
-            player1.SetActive( false );
-            player2.SetActive( false );
-            //Add delay
-            ReRollinEqualCase.Instance.ReRollEqualCase();
+            if (resultOfTheRollP1 == resultOfTheRollP2)
+            {
+                //Call Reroll script with D6
 
-        }else if(resultOfTheRollP1 < resultOfTheRollP2)
-        {
-            //P1 looses the round
+                //reroll splash screen
+                player1.SetActive(false);
+                player2.SetActive(false);
+                //Add delay
+                ReRollinEqualCase.Instance.ReRollEqualCase();
 
-            //Which players won splash screen
-            
-            //add delay on the disabled enabled
-            Invoke("player2Win", 4);
-            Invoke("ToggleBoolCamP2",0.5f);
+            }
+            else if (resultOfTheRollP1 < resultOfTheRollP2)
+            {
+                //P1 looses the round
+
+                //Which players won splash screen
+
+                //add delay on the disabled enabled
+                Invoke("player2Win", 4);
+                Invoke("ToggleBoolCamP2", 0.5f);
+            }
+            else
+            {
+                //P2 looses the round
+
+                //Which players won splash screen
+
+
+                //add delay on the disabled enabled
+                Invoke("player1Win", 4);
+                Invoke("ToggleBoolCamP1", 0.5f);
+
+            }
         }
         else
         {
-            //P2 looses the round
+            if (resultOfTheRollP1 == resultOfTheRollP2)
+            {
+                //Call Reroll script with D6
 
-            //Which players won splash screen
+                //reroll splash screen
+                player1.SetActive(false);
+                player2.SetActive(false);
+                //Add delay
+                ReRollinEqualCase.Instance.ReRollEqualCase();
+
+            }
+            else if (resultOfTheRollP1 < resultOfTheRollP2)
+            {
+                //P1 looses the round
+
+                //Which players won splash screen
+
+                //add delay on the disabled enabled
+                Invoke("player1Win", 4);
+                Invoke("ToggleBoolCamP1", 0.5f);
+                PowerUpP1.lowestWinPowerUp = false;
+            }
+            else
+            {
+                //P2 looses the round
+
+                //Which players won splash screen
 
 
-            //add delay on the disabled enabled
-            Invoke("player1Win", 4);
-            Invoke("ToggleBoolCamP1", 0.5f);
+                //add delay on the disabled enabled
+                Invoke("player2Win", 4);
+                Invoke("ToggleBoolCamP2", 0.5f);
+                PowerUpP1.lowestWinPowerUp = false;
 
+            }
         }
     }
 

@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Card_D10_Mat
+  m_Name: Card_D10_Mat 1
   m_Shader: {fileID: -6465566751694194690, guid: ea04788362c34654490b2a08c3e0865a,
     type: 3}
   m_Parent: {fileID: 0}
@@ -81,7 +81,6 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _LerpVal: 0
     - _OpaqueCullMode: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -117,5 +116,4 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FresnelColor: {r: 0.24328047, g: 0.5741596, b: 0.7264151, a: 0}
   m_BuildTextureStacks: []

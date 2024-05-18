@@ -22,11 +22,14 @@ public class CheckNumberDifferences : MonoBehaviour
     [SerializeField] private Rigidbody[] rbDiceP2;
     [SerializeField] GameObject player1, player2;
 
+    UnityEngine.Vector3 camSpawnPoint;
+
     public bool camFocusP1;
     public bool camFocusP2;
 
     [SerializeField] Camera cam;
     private float smoothTime = 10;
+    private float smoothTimeX = 5;
     private void Awake()
     {
         Instance = this;
@@ -39,6 +42,7 @@ public class CheckNumberDifferences : MonoBehaviour
 
     private void Start()
     {
+        camSpawnPoint = cam.transform.position;
     }
 
     private void Update()
@@ -93,7 +97,8 @@ public class CheckNumberDifferences : MonoBehaviour
     {
         resultOfTheRollP1 = DiceResultGenerator.numberGenerated1;
         resultOfTheRollP2 = DiceResultGenerator.numberGenerated2;
-        if (PowerUpP1.lowestWinPowerUp == false)
+
+        if (PowerUpP1.lowestWinPowerUp == false && PowerUpP2.lowestWinPowerUp == false)
         {
             if (resultOfTheRollP1 == resultOfTheRollP2)
             {
@@ -114,7 +119,7 @@ public class CheckNumberDifferences : MonoBehaviour
 
                 //add delay on the disabled enabled
                 Invoke("player2Win", 4);
-                Invoke("ToggleBoolCamP2", 0.5f);
+                Invoke("ToggleBoolCamP2", 1f);
             }
             else
             {
@@ -125,11 +130,13 @@ public class CheckNumberDifferences : MonoBehaviour
 
                 //add delay on the disabled enabled
                 Invoke("player1Win", 4);
-                Invoke("ToggleBoolCamP1", 0.5f);
+                Invoke("ToggleBoolCamP1", 1f);
 
             }
+
         }
-        else
+
+        if (PowerUpP1.lowestWinPowerUp == true || PowerUpP2.lowestWinPowerUp == true)
         {
             if (resultOfTheRollP1 == resultOfTheRollP2)
             {
@@ -167,13 +174,14 @@ public class CheckNumberDifferences : MonoBehaviour
 
             }
         }
+       
     }
 
     IEnumerator FocusCamP1()
     {
-        UnityEngine.Vector3 cameraPosition = new UnityEngine.Vector3(DiceP1[DiceRollingManager.currentDiceP1].transform.position.x, DiceP1[DiceRollingManager.currentDiceP1].transform.position.y + 1.5f, DiceP1[DiceRollingManager.currentDiceP1].transform.position.z - 1);
+        UnityEngine.Vector3 cameraPosition = new UnityEngine.Vector3(DiceP1[DiceRollingManager.currentDiceP1].transform.position.x, DiceP1[DiceRollingManager.currentDiceP1].transform.position.y - 0.6f, DiceP1[DiceRollingManager.currentDiceP1].transform.position.z - 2);
         
-        if (cameraPosition.x >= DiceP1[DiceRollingManager.currentDiceP1].transform.position.x && cameraPosition.y <= DiceP1[DiceRollingManager.currentDiceP1].transform.position.y + 1.5f && cameraPosition.z >= DiceP1[DiceRollingManager.currentDiceP1].transform.position.z - 1)
+        if (cameraPosition.x >= DiceP1[DiceRollingManager.currentDiceP1].transform.position.x && cameraPosition.y <= DiceP1[DiceRollingManager.currentDiceP1].transform.position.y + 1f && cameraPosition.z >= DiceP1[DiceRollingManager.currentDiceP1].transform.position.z - 1f)
         {
             cam.transform.position = cameraPosition;
         }
@@ -182,17 +190,18 @@ public class CheckNumberDifferences : MonoBehaviour
             float moveOnX = cameraPosition.x - cam.transform.position.x;
             float moveOnY = cameraPosition.y - cam.transform.position.y;
             float moveOnZ = cameraPosition.z - cam.transform.position.z;
-            cam.transform.position = new UnityEngine.Vector3(cam.transform.position.x + (moveOnX * Time.deltaTime/ smoothTime), cam.transform.position.y - (moveOnY * Time.deltaTime / smoothTime), cam.transform.position.z - (moveOnZ * Time.deltaTime / smoothTime));
+            cam.transform.position = new UnityEngine.Vector3(cam.transform.position.x + (moveOnX * Time.deltaTime/ smoothTimeX), cam.transform.position.y + (moveOnY * Time.deltaTime / (smoothTime * 4)), cam.transform.position.z + (moveOnZ * Time.deltaTime / smoothTime * 2));
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         camFocusP1 = false;
+        cam.transform.position = camSpawnPoint;
     }
 
     IEnumerator FocusCamP2()
     {
-        UnityEngine.Vector3 cameraPosition = new UnityEngine.Vector3(DiceP2[DiceRollingManager.currentDiceP2].transform.position.x, DiceP2[DiceRollingManager.currentDiceP2].transform.position.y + 1.5f, DiceP2[DiceRollingManager.currentDiceP2].transform.position.z -1);
+        UnityEngine.Vector3 cameraPosition = new UnityEngine.Vector3(DiceP2[DiceRollingManager.currentDiceP2].transform.position.x, DiceP2[DiceRollingManager.currentDiceP2].transform.position.y - 0.6f, DiceP2[DiceRollingManager.currentDiceP2].transform.position.z - 2);
         
-        if (cameraPosition.x >= DiceP2[DiceRollingManager.currentDiceP2].transform.position.x && cameraPosition.y <= DiceP2[DiceRollingManager.currentDiceP2].transform.position.y + 1.5f && cameraPosition.z >= DiceP2[DiceRollingManager.currentDiceP2].transform.position.z - 1)
+        if (cameraPosition.x >= DiceP2[DiceRollingManager.currentDiceP2].transform.position.x && cameraPosition.y <= DiceP2[DiceRollingManager.currentDiceP2].transform.position.y + 1f && cameraPosition.z >= DiceP2[DiceRollingManager.currentDiceP2].transform.position.z - 1f)
         {
             cam.transform.position = cameraPosition;
         }
@@ -201,10 +210,11 @@ public class CheckNumberDifferences : MonoBehaviour
             float moveOnX = cameraPosition.x - cam.transform.position.x;
             float moveOnY = cameraPosition.y - cam.transform.position.y;
             float moveOnZ = cameraPosition.z - cam.transform.position.z;
-            cam.transform.position = new UnityEngine.Vector3(cam.transform.position.x + (moveOnX * Time.deltaTime / smoothTime), cam.transform.position.y - (moveOnY * Time.deltaTime / smoothTime), cam.transform.position.z - (moveOnZ * Time.deltaTime / smoothTime)) ;
+            cam.transform.position = new UnityEngine.Vector3(cam.transform.position.x + (moveOnX * Time.deltaTime / smoothTimeX), cam.transform.position.y + (moveOnY * Time.deltaTime / (smoothTime * 4)), cam.transform.position.z + (moveOnZ * Time.deltaTime / smoothTime*2)) ;
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         camFocusP2 = false;
+        cam.transform.position = camSpawnPoint;
     }
 
     public void player1Win()

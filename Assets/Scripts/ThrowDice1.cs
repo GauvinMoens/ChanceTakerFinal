@@ -15,7 +15,7 @@ public class ThrowDice1 : MonoBehaviour
     [SerializeField] GameObject camP1, camP2;
     public static float p_strenghtP2;
     [SerializeField] float strenghtMax = 150;
-
+    [SerializeField] GameObject endButtonP1;
     public static int forceDice;
 
     int p_currentDice = 0;
@@ -318,12 +318,19 @@ public class ThrowDice1 : MonoBehaviour
         currentLastChanceDice.SetActive(false);
         currentLastChanceVal.SetActive(false);
         DiceRollingManager.Instance.Roll();
+        endButtonP1.SetActive(false);
+        Invoke("EndButtonP1", 5);
     }
 
     public void SetCam()
     {
         camP2.SetActive(false);
         camP1.SetActive(true);
+    }
+
+    public void EndButtonP1()
+    {
+        endButtonP1.SetActive(true) ;
     }
 }
 

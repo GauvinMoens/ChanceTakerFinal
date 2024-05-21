@@ -91,6 +91,7 @@ public class DiceResultGenerator : MonoBehaviour
             {
                 numberGenerated1 = Random.Range(1, 20);
             }
+            PowerUpP2.equalizerPowerUpEnabled = false;
         }
             //DicePowerUps
         if (PowerUpP1.D4PowerUpEnabled == true)
@@ -161,8 +162,8 @@ public class DiceResultGenerator : MonoBehaviour
             if (numberGeneratedP1Disadvantage <= numberGenerated1)
             {
                 numberGenerated1 = numberGeneratedP1Disadvantage;
-                PowerUpP2.disadvantageEnabled = false;
             }
+            PowerUpP2.disadvantageEnabled = false;
         }
 
         if (PowerUpP1.advantageEnabled == true)
@@ -329,8 +330,8 @@ public class DiceResultGenerator : MonoBehaviour
             if(numberGeneratedP2Disadvantage <= numberGenerated2)
             {
                 numberGenerated2 = numberGeneratedP2Disadvantage;
-                PowerUpP1.disadvantageEnabled = false;
             }
+            PowerUpP1.disadvantageEnabled = false;
         }
 
         if (PowerUpP2.advantageEnabled == true)

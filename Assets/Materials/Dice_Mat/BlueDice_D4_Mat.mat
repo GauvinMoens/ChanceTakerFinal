@@ -103,7 +103,7 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HighlightColor: {r: 0.458089, g: 0.8050313, b: 0.15442407, a: 0}
+    - _HighlightColor: {r: 0.7607843, g: 0.4862745, b: 0.74390167, a: 0}
     - _Strenght: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5114709641949861896

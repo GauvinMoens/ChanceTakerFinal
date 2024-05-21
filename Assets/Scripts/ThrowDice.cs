@@ -54,21 +54,19 @@ public class ThrowDice : MonoBehaviour
             mat1[i].SetFloat("_LerpVal", 0);
         }
  
-        mat1[0].SetFloat("_LerpVal", 1);
+        mat1[0].SetFloat("_LerpVal", 2.35f);
     }
 
     void Update()
     {
         if (CheckNumberDifferences.player1DiceLeft == 1)
         {
-
             changeInputLastChanceDice.SetActive(true);
             changeLastChanceNb.SetActive(true);
             currentLastChanceDice.SetActive(true);
             currentLastChanceVal.SetActive(true);
         }
         
-
         DiceSelection();
 
         ChangeColorOfTheSelectionText();
@@ -175,7 +173,7 @@ public class ThrowDice : MonoBehaviour
                 {
                     mat1[p_currentDice].SetFloat("_LerpVal", 0);
                     p_currentDice = 0;
-                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                    mat1[p_currentDice].SetFloat("_LerpVal", 2.35f);
                 }
             }
             if (Input.GetKeyDown(KeyCode.W))
@@ -188,7 +186,7 @@ public class ThrowDice : MonoBehaviour
                 {
                     mat1[p_currentDice].SetFloat("_LerpVal", 0);
                     p_currentDice = 1;
-                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                    mat1[p_currentDice].SetFloat("_LerpVal", 2.35f);
                 }
             }
             if (Input.GetKeyDown(KeyCode.E))
@@ -201,7 +199,7 @@ public class ThrowDice : MonoBehaviour
                 {
                     mat1[p_currentDice].SetFloat("_LerpVal", 0);
                     p_currentDice = 2;
-                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                    mat1[p_currentDice].SetFloat("_LerpVal", 2.35f);
                 }
             }
             if (Input.GetKeyDown(KeyCode.R))
@@ -214,7 +212,7 @@ public class ThrowDice : MonoBehaviour
                 {
                     mat1[p_currentDice].SetFloat("_LerpVal", 0);
                     p_currentDice = 3;
-                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                    mat1[p_currentDice].SetFloat("_LerpVal", 2.35f);
                 }
             }
             if (Input.GetKeyDown(KeyCode.T))
@@ -227,7 +225,7 @@ public class ThrowDice : MonoBehaviour
                 {
                     mat1[p_currentDice].SetFloat("_LerpVal", 0);
                     p_currentDice = 4;
-                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                    mat1[p_currentDice].SetFloat("_LerpVal", 2.35f);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Y))
@@ -240,7 +238,7 @@ public class ThrowDice : MonoBehaviour
                 {
                     mat1[p_currentDice].SetFloat("_LerpVal", 0);
                     p_currentDice = 5;
-                    mat1[p_currentDice].SetFloat("_LerpVal", 1);
+                    mat1[p_currentDice].SetFloat("_LerpVal", 2.35f);
                 }
             }
         }

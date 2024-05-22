@@ -74,7 +74,7 @@ public class CheckNumberDifferences : MonoBehaviour
         if(ThrowDice.lastChanceNb == resultOfTheRollP1)
         {
             DiceP1[ThrowDice.lastChanceDice].SetActive(true);
-            diceP1Out[ThrowDice.lastChanceDice] = true;
+            diceP1Out[ThrowDice.lastChanceDice] = false;
             ++player1DiceLeft;
         }
         
@@ -86,7 +86,7 @@ public class CheckNumberDifferences : MonoBehaviour
         if (ThrowDice1.lastChanceNb == resultOfTheRollP2)
         {
             DiceP2[ThrowDice1.lastChanceDice].SetActive(true);
-            diceP2Out[ThrowDice1.lastChanceDice] = true;
+            diceP2Out[ThrowDice1.lastChanceDice] = false;
             ++player2DiceLeft;
         }
 

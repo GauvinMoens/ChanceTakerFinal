@@ -212,12 +212,20 @@ public class DiceResultGenerator : MonoBehaviour
         if(PowerUpP1.add2Enabled == true)
         {
             numberGenerated1 += 2;
+            if(numberGenerated1 > 20)
+            {
+                numberGenerated1 = 20;
+            }
             PowerUpP1.add2Enabled = false;
         }
 
         if (PowerUpP2.sub2ToP2Enabled == true)
         {
             numberGenerated1 -= 2;
+            if (numberGenerated1 <- 0)
+            {
+                numberGenerated1 = 0;
+            }
             PowerUpP2.sub2ToP2Enabled = false;
         }
 
@@ -412,12 +420,20 @@ public class DiceResultGenerator : MonoBehaviour
         if (PowerUpP2.add2Enabled == true)
         {
             numberGenerated2 += 2;
+            if (numberGenerated2 > 20)
+            {
+                numberGenerated2 = 20;
+            }
             PowerUpP2.add2Enabled = false;
         }
 
         if (PowerUpP1.sub2ToP2Enabled == true)
         {
             numberGenerated2 -= 2;
+            if (numberGenerated2 <= 0)
+            {
+                numberGenerated2 = 1;
+            }
             PowerUpP1.sub2ToP2Enabled = false;
         }
 

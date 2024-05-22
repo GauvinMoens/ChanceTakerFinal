@@ -83,7 +83,30 @@ public class DiceRollingManager : MonoBehaviour
             diceRbP1[currentDiceP1].AddForce(new Vector3(1, 0, p_randNegPosXP1[currentDiceP1]) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
             diceRbP1[currentDiceP1].AddTorque(new Vector3(randXP1, randYP1, randZP1) * strenghtP1 * strenghtRotMultiplier, ForceMode.Impulse);
             diceRolledP1 = currentDiceP1;
-            
+            if(currentDiceP1 == 0)
+            {
+                AudioManager.instance.P1D4Sound();
+            }
+            if (currentDiceP1 == 1)
+            {
+                AudioManager.instance.P1D6Sound();
+            }
+            if (currentDiceP1 == 2)
+            {
+                AudioManager.instance.P1D8Sound();
+            }
+            if (currentDiceP1 == 3)
+            {
+                AudioManager.instance.P1D10Sound();
+            }
+            if (currentDiceP1 == 4)
+            {
+                AudioManager.instance.P1D12Sound();
+            }
+            if (currentDiceP1 == 5)
+            {
+                AudioManager.instance.P1D20Sound();
+            }
             Debug.Log(currentDiceP1);
 
             DiceResultGenerator.NumberGen1();
@@ -105,7 +128,30 @@ public class DiceRollingManager : MonoBehaviour
             diceRbP2[currentDiceP2].AddForce(new Vector3(-1, 0, p_randNegPosXP2[currentDiceP2]) * Time.deltaTime * strenghtMultiplier * p_speed * 4, ForceMode.Impulse);
             diceRbP2[currentDiceP2].AddTorque(new Vector3(randXP2, randYP2, randZP2) * strenghtP2 * strenghtRotMultiplier, ForceMode.Impulse);
             diceRolledP2 = currentDiceP2;
-            
+            if (currentDiceP2 == 0)
+            {
+                AudioManager.instance.P2D4Sound();
+            }
+            if (currentDiceP2 == 1)
+            {
+                AudioManager.instance.P2D6Sound();
+            }
+            if (currentDiceP2 == 2)
+            {
+                AudioManager.instance.P2D8Sound();
+            }
+            if (currentDiceP2 == 3)
+            {
+                AudioManager.instance.P2D10Sound();
+            }
+            if (currentDiceP2 == 4)
+            {
+                AudioManager.instance.P2D12Sound();
+            }
+            if (currentDiceP2 == 5)
+            {
+                AudioManager.instance.P2D20Sound();
+            }
             DiceResultGenerator.NumberGen2();
 
             //Instantiate the number sprite on the Dice after 2 sec delay

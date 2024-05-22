@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2262.555, g: 2404.0745, b: 3501.6685, a: 1}
+  m_IndirectSpecularColor: {r: 2262.2913, g: 2403.9182, b: 3501.4653, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5763,9 +5763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eebcdb422f459a41b1feba432f6f644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaceP1: {fileID: 619994277150389166, guid: 1fce8182bc2c1764ea6e843f9db09bdd,
+  diceFaceP1: {fileID: 5837088084240276974, guid: 33903b2ff6f756a4596d2e1732c3bf8d,
     type: 3}
-  diceFaceP2: {fileID: 619994277150389166, guid: 782aa8338013dc640b598db41c80b9ab,
+  diceFaceP2: {fileID: 5837088084240276974, guid: c18b654c384737548ab85f96874ab67d,
     type: 3}
   number:
   - {fileID: 2100000, guid: d352e9af4e330454a873e77fca3cad12, type: 2}
@@ -5941,6 +5941,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSrc: {fileID: 649767382}
   UISrc: {fileID: 471346622}
+  p1AudioSource: {fileID: 1129217477}
+  p2AudioSource: {fileID: 438061406}
   doorOpenedClip: {fileID: 8300000, guid: 450c30400e036dd4cb2b4ace96420f81, type: 3}
   playClip: {fileID: 8300000, guid: d65e829ee488f53439767e923e13b4ac, type: 3}
   exitClip: {fileID: 8300000, guid: ade3b8d5d0d76564095d32b9ae7932ff, type: 3}

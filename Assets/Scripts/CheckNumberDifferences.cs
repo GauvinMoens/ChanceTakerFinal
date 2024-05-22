@@ -66,6 +66,7 @@ public class CheckNumberDifferences : MonoBehaviour
         {
             StartCoroutine("FocusCamP2");
         }
+
     }
 
     public void CheckLastChanceNbP1()

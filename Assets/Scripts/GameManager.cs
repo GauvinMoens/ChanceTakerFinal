@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Animator rDoor;
     [SerializeField] Animator cam;
     [SerializeField] GameObject mainMenu;
-
+    bool soundEnabled = false;
+    
     public static GameManager instance { get; private set; }
 
     private void Awake()
@@ -28,11 +29,18 @@ public class GameManager : MonoBehaviour
 
     public void PlayButton()
     {
+        AudioManager.instance.PlaySoundButton();
         rDoor.SetBool("DoorOpened", true);
         lDoor.SetBool("DoorOpened", true);
         cam.SetBool("CameraMove", true);
+        AudioManager.instance.DoorOpened();
         Invoke("DisableMainMenu", 1);
         Invoke("LaunchTheGame", 3);
+    }
+
+    public void SettingsButton()
+    {
+        AudioManager.instance.PlaySoundButton();
     }
 
     public void DisableMainMenu() {
@@ -47,11 +55,13 @@ public class GameManager : MonoBehaviour
 
     public void QuitButton()
     {
+        AudioManager.instance.ExitButtonSound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void ExitButton()
     {
+        AudioManager.instance.ExitButtonSound();
         Application.Quit();
     }
 }

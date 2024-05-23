@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance { get; private set; }
 
     [SerializeField] AudioSource audioSrc, UISrc, p1AudioSource, p2AudioSource;
-    [SerializeField] AudioClip doorOpenedClip,playClip,exitClip;
+    [SerializeField] AudioClip doorOpenedClip,playClip,exitClip,selectionClip,unselectionClip;
     [SerializeField] AudioClip[] _diceSounds;
 
     private void Awake()
@@ -94,5 +94,16 @@ public class AudioManager : MonoBehaviour
     {
         p2AudioSource.clip = _diceSounds[Random.Range(49, 58)];
         p2AudioSource.Play();
+    }
+
+    public void SelectionSound()
+    {
+        audioSrc.clip = selectionClip;
+        audioSrc.Play();
+    }
+    public void UnselectionSound()
+    {
+        audioSrc.clip = unselectionClip;
+        audioSrc.Play();
     }
 }

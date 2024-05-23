@@ -59,10 +59,11 @@ public class PowerUpP2 : MonoBehaviour
 
         if (ThrowDice.p2Enabled == true)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.A))
             {
+                AudioManager.instance.SelectionSound();
                 powerUpMat[random[0]].SetFloat("_LerpVal", -1.1f);
-                powerUp[0].transform.position = new Vector3(powerUp[0].transform.position.x - 0.01f, powerUp[0].transform.position.y + 0.005f, powerUp[0].transform.position.z);
+                powerUp[0].transform.position = new Vector3(powerUp[0].transform.position.x - 0.2f, powerUp[0].transform.position.y + 0.1f, powerUp[0].transform.position.z);
                 powerUp1Enabled = true;
                 if (random[0] == 0)
                 {
@@ -113,8 +114,9 @@ public class PowerUpP2 : MonoBehaviour
                     LowestWinPowerUp();
                 }
             }
-            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.A) && Input.GetKey(KeyCode.LeftShift))
             {
+                AudioManager.instance.UnselectionSound();
                 powerUpMat[random[0]].SetFloat("_LerpVal", 0f);
                 powerUp[0].transform.position = C1Pos;
                 if (random[0] == 0)
@@ -179,10 +181,11 @@ public class PowerUpP2 : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S))
             {
+                AudioManager.instance.SelectionSound();
                 powerUpMat[random[1]].SetFloat("_LerpVal", -1.1f);
-                powerUp[1].transform.position = new Vector3(powerUp[1].transform.position.x - 0.01f, powerUp[1].transform.position.y + 0.005f, powerUp[1].transform.position.z);
+                powerUp[1].transform.position = new Vector3(powerUp[1].transform.position.x - 0.2f, powerUp[1].transform.position.y + 0.1f, powerUp[1].transform.position.z);
                 powerUp2Enabled = true;
                 if (random[1] == 0)
                 {
@@ -233,8 +236,9 @@ public class PowerUpP2 : MonoBehaviour
                     LowestWinPowerUp();
                 }
             }
-            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.S) && Input.GetKey(KeyCode.LeftShift))
             {
+                AudioManager.instance.UnselectionSound();
                 powerUpMat[random[1]].SetFloat("_LerpVal", 0f);
                 powerUp[1].transform.position = C2Pos;
                 if (random[1] == 0)
@@ -299,10 +303,11 @@ public class PowerUpP2 : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.D))
             {
+                AudioManager.instance.SelectionSound();
                 powerUpMat[random[2]].SetFloat("_LerpVal", -1.1f);
-                powerUp[2].transform.position = new Vector3(powerUp[2].transform.position.x - 0.01f, powerUp[2].transform.position.y + 0.005f, powerUp[2].transform.position.z);
+                powerUp[2].transform.position = new Vector3(powerUp[2].transform.position.x - 0.2f, powerUp[2].transform.position.y + 0.1f, powerUp[2].transform.position.z);
                 powerUp3Enabled = true;
                 if (random[2] == 0)
                 {
@@ -353,8 +358,9 @@ public class PowerUpP2 : MonoBehaviour
                     LowestWinPowerUp();
                 }
             }
-            if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
             {
+                AudioManager.instance.UnselectionSound();
                 powerUp[2].transform.position = C3Pos;
                 powerUpMat[random[2]].SetFloat("_LerpVal", 0f);
                 if (random[2] == 0)

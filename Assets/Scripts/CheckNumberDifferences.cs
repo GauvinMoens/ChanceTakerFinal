@@ -124,14 +124,14 @@ public class CheckNumberDifferences : MonoBehaviour
     public void VictoryPlayer1()
     {
         //splash screen
-        AudioManager.instance.VictorySound();
+        //AudioManager.instance.VictorySound();
         splashScreenVictoryP1.SetActive(true);
     }
 
     public void VictoryPlayer2()
     {
         //splash screen
-        AudioManager.instance.VictorySound();
+        //AudioManager.instance.VictorySound();
         splashScreenVictoryP2.SetActive(true);
     }
    

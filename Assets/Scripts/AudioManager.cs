@@ -47,10 +47,10 @@ public class AudioManager : MonoBehaviour
         p1AudioSource.Play();
     }
 
-    public void VictorySound()
-    {
-        UISrc.PlayOneShot(gunshotClip);
-    }
+    //public void VictorySound()
+    //{
+    //    UISrc.PlayOneShot(gunshotClip);
+    //}
 
     public void P1D4Sound()
     {

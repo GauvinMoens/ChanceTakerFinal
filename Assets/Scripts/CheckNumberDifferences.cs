@@ -24,6 +24,8 @@ public class CheckNumberDifferences : MonoBehaviour
 
     UnityEngine.Vector3 camSpawnPoint;
 
+    [SerializeField] private GameObject splashScreenVictoryP1, splashScreenVictoryP2;
+
     public bool camFocusP1;
     public bool camFocusP2;
 
@@ -47,6 +49,7 @@ public class CheckNumberDifferences : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(player1DiceLeft + " " + player2DiceLeft);
         if (player1DiceLeft == 0)
         {
             //player 2 win splash screen
@@ -74,24 +77,55 @@ public class CheckNumberDifferences : MonoBehaviour
        
         if(ThrowDice.lastChanceNb == resultOfTheRollP1)
         {
+            Debug.Log("WinLastChance");
+            ++player1DiceLeft;
             DiceP1[ThrowDice.lastChanceDice].SetActive(true);
             diceP1Out[ThrowDice.lastChanceDice] = false;
-            ++player1DiceLeft;
+        }
+        else
+        {
+            Invoke("VictoryPlayer2", 1.5f);
+            Invoke("Player1EndGame", 3.5f);
         }
         
         ThrowDice.lastChanceNb = 1;
     }
 
+
     public void CheckLastChanceNbP2()
     {
         if (ThrowDice1.lastChanceNb == resultOfTheRollP2)
         {
+            Debug.Log("WinLastChance");
+            ++player2DiceLeft;
             DiceP2[ThrowDice1.lastChanceDice].SetActive(true);
             diceP2Out[ThrowDice1.lastChanceDice] = false;
-            ++player2DiceLeft;
+        }
+        else
+        {
+            Invoke("VictoryPlayer1", 1.5f);
+            Invoke("Player2EndGame", 3.5f);
         }
 
         ThrowDice1.lastChanceNb = 1;
+    }
+    public void VictoryPlayer1()
+    {
+        //splash screen
+        splashScreenVictoryP1.SetActive(true);
+    }
+    public void Player1EndGame()
+    {
+        player1DiceLeft = 0;
+    }
+    public void VictoryPlayer2()
+    {
+        //splash screen
+        splashScreenVictoryP1.SetActive(true);
+    }
+    public void Player2EndGame()
+    {
+        player2DiceLeft = 0;
     }
 
     public void CheckDifferenceBetweenResultNumbers()

@@ -60,7 +60,6 @@ public class DiceRollingManager : MonoBehaviour
     public void Roll()
     {
         ++rollingCondition;
-        Debug.Log(rollingCondition);
         if (rollingCondition == 2)
         {
             camRoll.SetActive(true);
@@ -107,7 +106,6 @@ public class DiceRollingManager : MonoBehaviour
             {
                 AudioManager.instance.P1D20Sound();
             }
-            Debug.Log(currentDiceP1);
 
             DiceResultGenerator.NumberGen1();
 
@@ -160,12 +158,16 @@ public class DiceRollingManager : MonoBehaviour
             //Add a delay and a splash screen with what player won the round
 
             CheckNumberDifferences.Instance.CheckDifferenceBetweenResultNumbers();
+
+            
             if (CheckNumberDifferences.player1DiceLeft == 1)
             {
+                Debug.Log("LastchanceP1");
                 CheckNumberDifferences.Instance.CheckLastChanceNbP1();
             }
             if (CheckNumberDifferences.player2DiceLeft == 1)
             {
+                Debug.Log("LastchanceP1");
                 CheckNumberDifferences.Instance.CheckLastChanceNbP2();
             }
 

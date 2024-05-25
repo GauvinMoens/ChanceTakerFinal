@@ -206,7 +206,6 @@ public class DiceResultGenerator : MonoBehaviour
             PowerUpP1.advantageEnabled = false;
         }
 
-        Debug.Log(DiceRollingManager.diceRolledP1 + " " + numberGenerated1);
 
         //powerUps
         if(PowerUpP1.add2Enabled == true)
@@ -382,7 +381,6 @@ public class DiceResultGenerator : MonoBehaviour
             PowerUpP1.advantageEnabled = false;
         }
 
-        Debug.Log(DiceRollingManager.diceRolledP2 + " " + numberGenerated2);
 
         //DicePowerUps
         if (PowerUpP2.D4PowerUpEnabled == true)
@@ -470,7 +468,6 @@ public class DiceResultGenerator : MonoBehaviour
 
     public void ShowNumberOfTheDice()
     {
-        Debug.Log("numberOfFace");
         Invoke("InstantiateNumber", 2);
     }
 

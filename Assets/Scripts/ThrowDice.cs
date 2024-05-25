@@ -65,88 +65,53 @@ public class ThrowDice : MonoBehaviour
             changeLastChanceNb.SetActive(true);
             currentLastChanceDice.SetActive(true);
             currentLastChanceVal.SetActive(true);
+            int.TryParse(inputDiceNb, out lastChanceNb);
+            if (lastChanceNb <= 0)
+            {
+                lastChanceNb = 1;
+            }
+            if (lastChanceDice > 20)
+            {
+                lastChanceNb = 20;
+            }
+            lastChanceNbText.text = lastChanceNb.ToString();
+
+            int.TryParse(inputDice, out lastChanceDiceVar);
+            if (lastChanceDiceVar <= 4)
+            {
+                lastChanceDice = 0;
+            }
+            if (lastChanceDiceVar > 4 && lastChanceDiceVar <= 6)
+            {
+                lastChanceDice = 1;
+            }
+            if (lastChanceDiceVar <= 8 && lastChanceDiceVar > 6)
+            {
+                lastChanceDice = 2;
+            }
+            if (lastChanceDiceVar <= 10 && lastChanceDiceVar > 8)
+            {
+                lastChanceDice = 3;
+            }
+            if (lastChanceDiceVar <= 12 && lastChanceDiceVar > 10)
+            {
+                lastChanceDice = 4;
+            }
+            if (lastChanceDiceVar <= 20 && lastChanceDiceVar > 12 || lastChanceDiceVar > 20)
+            {
+                lastChanceDice = 5;
+            }
+            int lCDice = lastChanceDice + 1;
+            lastChanceDiceSelectionText.text = lCDice.ToString();
         }
         
         DiceSelection();
 
-        ChangeColorOfTheSelectionText();
-
         Throw();
 
-        int.TryParse(inputDiceNb, out lastChanceNb);
-        if (lastChanceNb <= 0)
-        {
-            lastChanceNb = 1;
-        }
-        if (lastChanceDice > 20)
-        {
-            lastChanceNb = 20;
-        }
-        lastChanceNbText.text = lastChanceNb.ToString();
-
-        int.TryParse(inputDice, out lastChanceDiceVar);
-        if (lastChanceDiceVar <= 4)
-        {
-            lastChanceDice = 0;
-        }
-        if (lastChanceDiceVar > 4 && lastChanceDiceVar <= 6)
-        {
-            lastChanceDice = 1;
-        }
-        if (lastChanceDiceVar <= 8 && lastChanceDiceVar > 6)
-        {
-            lastChanceDice = 2;
-        }
-        if (lastChanceDiceVar <= 10 && lastChanceDiceVar > 8)
-        {
-            lastChanceDice = 3;
-        }
-        if (lastChanceDiceVar <= 12 && lastChanceDiceVar > 10)
-        {
-            lastChanceDice = 4;
-        }
-        if (lastChanceDiceVar <= 20 && lastChanceDiceVar > 12 || lastChanceDiceVar > 20)
-        {
-            lastChanceDice = 5;
-        }
-        int lCDice = lastChanceDice + 1;
-        lastChanceDiceSelectionText.text = lCDice.ToString();
     }
 
-    public void ChangeColorOfTheSelectionText()
-    {
-        if (CheckNumberDifferences.diceP1Out[0] == true)
-        {
-            if (lastChanceDice == 0)
-                lastChanceDiceSelectionText.color = Color.red;
-        }
-        if (CheckNumberDifferences.diceP1Out[1] == true)
-        {
-            if (lastChanceDice == 1)
-                lastChanceDiceSelectionText.color = Color.red;
-        }
-        if (CheckNumberDifferences.diceP1Out[2] == true)
-        {
-            if (lastChanceDice == 2)
-                lastChanceDiceSelectionText.color = Color.red;
-        }
-        if (CheckNumberDifferences.diceP1Out[3] == true)
-        {
-            if (lastChanceDice == 3)
-                lastChanceDiceSelectionText.color = Color.red;
-        }
-        if (CheckNumberDifferences.diceP1Out[4] == true)
-        {
-            if (lastChanceDice == 4)
-                lastChanceDiceSelectionText.color = Color.red;
-        }
-        if (CheckNumberDifferences.diceP1Out[5] == true)
-        {
-            if (lastChanceDice == 5)
-                lastChanceDiceSelectionText.color = Color.red;
-        }
-    }
-
+   
 
     public void ReadStringInput(string lastChanceDice)
     {

@@ -50,16 +50,20 @@ public class CheckNumberDifferences : MonoBehaviour
     private void Update()
     {
         Debug.Log(player1DiceLeft + " " + player2DiceLeft);
-        if (player1DiceLeft == 0)
+        if (player1DiceLeft <= 0)
         {
             //player 2 win splash screen
-            player2WinTheGame();
+            Invoke("VictoryPlayer2", 0.5f);
+            //Invoke("Player1EndGame", 3.5f);
+            Invoke("player2WinTheGame", 3f);
         }
 
-        if (player2DiceLeft == 0)
+        if (player2DiceLeft <= 0)
         {
             //player 1 win splash screen
-            player1WinTheGame();
+            Invoke("VictoryPlayer1", 0.5f);
+            //Invoke("Player1EndGame", 3.5f);
+            Invoke("player1WinTheGame", 3f);
         }
         if(camFocusP1 == true)
         {
@@ -82,11 +86,11 @@ public class CheckNumberDifferences : MonoBehaviour
             DiceP1[ThrowDice.lastChanceDice].SetActive(true);
             diceP1Out[ThrowDice.lastChanceDice] = false;
         }
-        else
-        {
-            Invoke("VictoryPlayer2", 1.5f);
-            Invoke("Player1EndGame", 3.5f);
-        }
+        //else
+        //{
+        //    Invoke("VictoryPlayer2", 1.5f);
+        //    Invoke("Player1EndGame", 3.5f);
+        //}
         
         ThrowDice.lastChanceNb = 1;
     }
@@ -101,11 +105,11 @@ public class CheckNumberDifferences : MonoBehaviour
             DiceP2[ThrowDice1.lastChanceDice].SetActive(true);
             diceP2Out[ThrowDice1.lastChanceDice] = false;
         }
-        else
-        {
-            Invoke("VictoryPlayer1", 1.5f);
-            Invoke("Player2EndGame", 3.5f);
-        }
+        //else
+        //{
+        //    Invoke("VictoryPlayer1", 1.5f);
+        //    Invoke("Player2EndGame", 3.5f);
+        //}
 
         ThrowDice1.lastChanceNb = 1;
     }
@@ -121,7 +125,7 @@ public class CheckNumberDifferences : MonoBehaviour
     public void VictoryPlayer2()
     {
         //splash screen
-        splashScreenVictoryP1.SetActive(true);
+        splashScreenVictoryP2.SetActive(true);
     }
     public void Player2EndGame()
     {

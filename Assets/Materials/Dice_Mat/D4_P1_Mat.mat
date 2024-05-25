@@ -82,7 +82,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
     - _FresnelPower: 2
-    - _LerpVal: 2.35
+    - _LerpVal: 0
     - _Metalic: 0.97
     - _OpaqueCullMode: 2
     - _RayTracing: 0

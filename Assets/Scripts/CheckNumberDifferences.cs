@@ -55,12 +55,12 @@ public class CheckNumberDifferences : MonoBehaviour
         Debug.Log(player1DiceLeft + " " + player2DiceLeft);
         if (player1DiceLeft <= 0)
         {
-            timer += Time.deltaTime;
-            if (timer <= 0.02f)
-            {
-                Debug.Log(timer);
-                AudioManager.instance.VictorySound();
-            }
+            //timer += Time.deltaTime;
+            //if (timer <= 0.0042f)
+            //{
+            //    Debug.Log(timer);
+            //    AudioManager.instance.VictorySound();
+            //}
             
             //player 2 win splash screen
             Invoke("VictoryPlayer2", 0.8f);
@@ -71,12 +71,12 @@ public class CheckNumberDifferences : MonoBehaviour
         if (player2DiceLeft <= 0)
         {
             //player 1 win splash screen
-            timer += Time.deltaTime;
-            if (timer <= 0.01f)
-            {
-                Debug.Log(timer);
-                AudioManager.instance.VictorySound();
-            }
+            //timer += Time.deltaTime;
+            //if (timer <= 0.0042f)
+            //{
+            //    Debug.Log(timer);
+            //    AudioManager.instance.VictorySound();
+            //}
 
             Invoke("VictoryPlayer1", 0.8f);
             //Invoke("Player1EndGame", 3.5f);

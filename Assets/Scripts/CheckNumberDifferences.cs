@@ -42,18 +42,28 @@ public class CheckNumberDifferences : MonoBehaviour
         }
     }
 
+    float timer;
     private void Start()
     {
+        timer = 0;
         camSpawnPoint = cam.transform.position;
     }
+
 
     private void Update()
     {
         Debug.Log(player1DiceLeft + " " + player2DiceLeft);
         if (player1DiceLeft <= 0)
         {
+            timer += Time.deltaTime;
+            if (timer <= 0.02f)
+            {
+                Debug.Log(timer);
+                AudioManager.instance.VictorySound();
+            }
+            
             //player 2 win splash screen
-            Invoke("VictoryPlayer2", 0.5f);
+            Invoke("VictoryPlayer2", 0.8f);
             //Invoke("Player1EndGame", 3.5f);
             Invoke("player2WinTheGame", 3f);
         }
@@ -61,7 +71,14 @@ public class CheckNumberDifferences : MonoBehaviour
         if (player2DiceLeft <= 0)
         {
             //player 1 win splash screen
-            Invoke("VictoryPlayer1", 0.5f);
+            timer += Time.deltaTime;
+            if (timer <= 0.01f)
+            {
+                Debug.Log(timer);
+                AudioManager.instance.VictorySound();
+            }
+
+            Invoke("VictoryPlayer1", 0.8f);
             //Invoke("Player1EndGame", 3.5f);
             Invoke("player1WinTheGame", 3f);
         }
@@ -86,11 +103,6 @@ public class CheckNumberDifferences : MonoBehaviour
             DiceP1[ThrowDice.lastChanceDice].SetActive(true);
             diceP1Out[ThrowDice.lastChanceDice] = false;
         }
-        //else
-        //{
-        //    Invoke("VictoryPlayer2", 1.5f);
-        //    Invoke("Player1EndGame", 3.5f);
-        //}
         
         ThrowDice.lastChanceNb = 1;
     }
@@ -105,32 +117,24 @@ public class CheckNumberDifferences : MonoBehaviour
             DiceP2[ThrowDice1.lastChanceDice].SetActive(true);
             diceP2Out[ThrowDice1.lastChanceDice] = false;
         }
-        //else
-        //{
-        //    Invoke("VictoryPlayer1", 1.5f);
-        //    Invoke("Player2EndGame", 3.5f);
-        //}
+ 
 
         ThrowDice1.lastChanceNb = 1;
     }
     public void VictoryPlayer1()
     {
         //splash screen
+        AudioManager.instance.VictorySound();
         splashScreenVictoryP1.SetActive(true);
     }
-    public void Player1EndGame()
-    {
-        player1DiceLeft = 0;
-    }
+
     public void VictoryPlayer2()
     {
         //splash screen
+        AudioManager.instance.VictorySound();
         splashScreenVictoryP2.SetActive(true);
     }
-    public void Player2EndGame()
-    {
-        player2DiceLeft = 0;
-    }
+   
 
     public void CheckDifferenceBetweenResultNumbers()
     {

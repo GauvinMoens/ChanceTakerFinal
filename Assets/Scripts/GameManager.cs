@@ -33,7 +33,9 @@ public class GameManager : MonoBehaviour
         rDoor.SetBool("DoorOpened", true);
         lDoor.SetBool("DoorOpened", true);
         cam.SetBool("CameraMove", true);
+        
         AudioManager.instance.DoorOpened();
+        Invoke("Footsteps", 0.65f);
         Invoke("DisableMainMenu", 1);
         Invoke("LaunchTheGame", 3);
     }
@@ -41,6 +43,11 @@ public class GameManager : MonoBehaviour
     public void SettingsButton()
     {
         AudioManager.instance.PlaySoundButton();
+    }
+
+    public void Footsteps()
+    {
+        AudioManager.instance.FootstepSound();
     }
 
     public void DisableMainMenu() {

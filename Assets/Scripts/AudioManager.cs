@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
 
-    [SerializeField] AudioSource audioSrc, UISrc, p1AudioSource, p2AudioSource;
-    [SerializeField] AudioClip doorOpenedClip,playClip,exitClip,selectionClip,unselectionClip;
+    [SerializeField] AudioSource audioSrc, UISrc, p1AudioSource, p2AudioSource, ambienceSrc;
+    [SerializeField] AudioClip doorOpenedClip,playClip,exitClip,selectionClip,unselectionClip,gunshotClip,footstepsClip;
     [SerializeField] AudioClip[] _diceSounds;
 
+    [SerializeField] Slider soundSlider, ambienceSlider;
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        soundSlider.value = 1;
+        ambienceSlider.value = 0.3f;
     }
 
     public void DoorOpened()
@@ -31,6 +39,17 @@ public class AudioManager : MonoBehaviour
     {
         UISrc.clip = exitClip;
         UISrc.Play();
+    }
+
+    public void FootstepSound()
+    {
+        p1AudioSource.clip = footstepsClip;
+        p1AudioSource.Play();
+    }
+
+    public void VictorySound()
+    {
+        UISrc.PlayOneShot(gunshotClip);
     }
 
     public void P1D4Sound()
@@ -105,5 +124,15 @@ public class AudioManager : MonoBehaviour
     {
         audioSrc.clip = unselectionClip;
         audioSrc.Play();
+    }
+
+    private void Update()
+    {
+        audioSrc.volume = soundSlider.value;
+        UISrc.volume = soundSlider.value;
+        p1AudioSource.volume = soundSlider.value;
+        p2AudioSource.volume = soundSlider.value;
+
+        ambienceSrc.volume = ambienceSlider.value;
     }
 }

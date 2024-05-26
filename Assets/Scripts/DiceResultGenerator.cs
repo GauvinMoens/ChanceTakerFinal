@@ -221,7 +221,7 @@ public class DiceResultGenerator : MonoBehaviour
         if (PowerUpP2.sub2ToP2Enabled == true)
         {
             numberGenerated1 -= 2;
-            if (numberGenerated1 <- 0)
+            if (numberGenerated1 <= 0)
             {
                 numberGenerated1 = 0;
             }

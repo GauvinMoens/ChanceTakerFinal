@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WallSaloon_Mat
+  m_Name: Wall_Mat
   m_Shader: {fileID: -6465566751694194690, guid: cd2c5aa406d3a0d49b616493215db4c6,
     type: 3}
   m_Parent: {fileID: 0}
@@ -73,7 +73,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Smoothness: 0.43
+    - _Smoothness: 0
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -103,9 +103,9 @@ Material:
     - _Color: {r: 0.40566036, g: 0.33486116, b: 0.33486116, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Tiliing: {r: 2.21, g: 1.14, b: 0, a: 0}
+    - _Tiliing: {r: 0.92, g: 1.23, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &8332388993342038037
+--- !u!114 &4019497907123376378
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
